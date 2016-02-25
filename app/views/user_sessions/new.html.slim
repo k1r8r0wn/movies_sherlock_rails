@@ -1,0 +1,12 @@
+.wrapper
+  .centered
+    h1 Sign in
+
+    = form_tag user_sessions_path do
+      = text_field_tag params[:email], nil, placeholder: 'Email'
+      = password_field_tag :password, nil, placeholder: 'Password'
+      = submit_tag 'Sign in'
+    .link
+      = link_to "Don't have an account yet?", new_user_path
+    .link
+      = link_to 'Back to home page', root_path

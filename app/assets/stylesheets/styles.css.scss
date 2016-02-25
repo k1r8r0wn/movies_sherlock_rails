@@ -57,6 +57,7 @@ $dark-secondary: rgba( $dark, .7 );
   position: absolute;
   padding: 1em 0;
   text-align: center;
+  z-index: 2;
   @include animation(Container 5s cubic-bezier(0.45, 0.43, 0.52, 1.03));
 }
 
@@ -92,7 +93,6 @@ $dark-secondary: rgba( $dark, .7 );
   padding: 0;
   border-radius: 12px;
   background: $red;
-  z-index: 1;
 
   ul {
     width: 100%;
@@ -199,7 +199,7 @@ li {
   z-index: 1;
   right: 1em;
 
-  a {
+  li {
     display: inline-block;
     margin: 0 10px;
     @include media(mobile) {

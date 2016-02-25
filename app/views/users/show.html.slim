@@ -1,21 +1,23 @@
-p#notice = notice
+.wrapper
+  .centered
+    h1 My personal page
 
-p
-  strong First Name:
-  = @user.first_name
-p
-  strong Last Name:
-  = @user.last_name
-p
-  strong Email:
-  = @user.email
-p
-  strong Password:
-  = @user.password
-p
-  strong Password Confirmation:
-  = @user.password_confirmation
+    p
+      strong First Name:
+      = @user.first_name
+    p
+      strong Last Name:
+      = @user.last_name
+    p
+      strong Email:
+      = @user.email
+    p
+      strong Password:
+      = @user.password
+    p
+      strong Password Confirmation:
+      = @user.password_confirmation
 
-= link_to 'Edit', edit_user_path(@user)
-'|
-= link_to 'Back', users_path
+    = link_to 'Edit', edit_user_path(@user)
+    '|
+    = link_to 'Back', users_path

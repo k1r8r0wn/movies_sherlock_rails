@@ -28,7 +28,7 @@ RSpec.describe UserSessionsController, type: :controller do
       it 'redirects to the users profile' do
         post :create, email: 'john@doe.com', password: '12345'
         expect(response).to be_redirect
-        expect(response).to redirect_to(user_path(:id))
+        expect(response).to redirect_to(user_path(user))
       end
 
       it 'finds the user' do

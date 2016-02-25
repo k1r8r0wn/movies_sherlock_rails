@@ -9,7 +9,7 @@
       'Helps you easily find any information about the movie you want
     = form_tag movies_path do
       = text_field_tag :movie_title, nil, placeholder: 'Movie title'
-      = submit_tag "Search"
+      = submit_tag 'Search', class: 'button'
     .make_with_love
       a href='http://kirillbobrov.com' target='_blank'
         'Make with &hearts; in Siberia

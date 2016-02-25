@@ -168,16 +168,12 @@ li {
 
 /* Logo */
 
-.logo,
-.icon {
+.logo {
+  @include animation(Rotate 3s 2s cubic-bezier(0.45, 0.43, 0.52, 1.03));
   @include media(mobile) {
     width: 25px;
     height: 25px;
   }
-}
-
-.logo {
-  @include animation(Rotate 3s 2s cubic-bezier(0.45, 0.43, 0.52, 1.03));
   @include media(mobile_low) {
     display: none;
   }
@@ -269,7 +265,7 @@ form {
 
   input[type='submit'] {
     max-width: 300px;
-    background-color: $orange;
+    background: $orange;
     color: $light;
     height: 39px;
     border-radius: 20px;
@@ -277,6 +273,7 @@ form {
     border: none;
     text-transform: uppercase;
     font-size: .9em;
+    -webkit-appearance: none;
     @include media(mobile_low) {
       margin-top: 14px;
     }

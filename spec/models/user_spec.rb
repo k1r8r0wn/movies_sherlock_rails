@@ -10,6 +10,7 @@ describe User do
       password_confirmation: '12345'
     }
   }
+
   context 'validations' do
     let(:user) { User.new(valid_attributes) }
 
@@ -36,7 +37,7 @@ describe User do
     end
   end
 
-  describe '#downcase_email' do
+  context '#downcase_email' do
     it 'makes the email attribute lower case' do
       user = User.new(valid_attributes.merge(email: 'JOHN@DOE.COM'))
       expect { user.downcase_email }.to change{ user.email }.

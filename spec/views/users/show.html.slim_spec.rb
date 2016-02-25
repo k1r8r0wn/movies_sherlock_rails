@@ -13,10 +13,10 @@ RSpec.describe 'users/show', type: :view do
 
   it 'renders attributes in <p>' do
     render
-    expect(rendered).to match(/First name/)
-    expect(rendered).to match(/Last name/)
+    expect(rendered).to match(/First Name/)
+    expect(rendered).to match(/Last Name/)
     expect(rendered).to match(/Email/)
     expect(rendered).to match(/Password/)
-    expect(rendered).to match(/Password confirmation/)
+    expect(rendered).to match(/Password Confirmation/)
   end
 end

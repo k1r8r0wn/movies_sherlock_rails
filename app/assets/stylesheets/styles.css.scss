@@ -10,6 +10,7 @@ $light: #fff;
 $orange: #e4805a;
 $red: #ca5959;
 $green: #008e7d;
+$blue: blue;
 
 // Type scale
 
@@ -84,6 +85,10 @@ $dark-secondary: rgba( $dark, .7 );
 
   &.success {
     background: $green;
+  }
+
+  &.notice {
+    background: $blue;
   }
 }
 

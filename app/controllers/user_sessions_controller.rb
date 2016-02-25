@@ -11,6 +11,11 @@ class UserSessionsController < ApplicationController
       flash.now[:error] = 'There was a problem logging in. Please check your email and password.'
       render :new
     end
+  end
 
+  def destroy
+    session[:user_id] = nil
+    reset_session
+    redirect_to root_path, notice: 'You have been logged out.'
   end
 end

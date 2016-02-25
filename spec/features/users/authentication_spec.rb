@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Logging In' do
+describe 'Signing in' do
   it 'logs the user in and goes to the users path' do
     create(:user)
     visit '/'

@@ -1,102 +1,70 @@
-.table-wrapper
-  .table-inner
-    table
-      caption
-        'Searching results for "#{@movie.title.capitalize}":
-      thead
-        tr
-          th
-            'Category
-          th
-            'Info
-      tbody
-        tr
-          td
-            'Year
-          td
-            == @movie.year
-        tr
-          td
-            'Rated
-          td
-            == @movie.rated
-        tr
-          td
-            'Released
-          td
-            == @movie.released
-        tr
-          td
-            'Runtime
-          td
-            == @movie.runtime
-        tr
-          td
-            'Director
-          td
-            == @movie.director
-        tr
-          td
-            'Writer
-          td
-            == @movie.writer
-        tr
-          td
-            'Actors
-          td
-            == @movie.actors
-        tr
-          td
-            'Plot
-          td
-            == @movie.plot
-        tr
-          td
-            'Language
-          td
-            == @movie.language
-        tr
-          td
-            'Country
-          td
-            == @movie.country
-        tr
-          td
-            'Awards
-          td
-            == @movie.awards
-        tr
-          td
-            'Poster
-          td
-            = image_tag(@movie.poster, alt: "Movie poster")
-        tr
-          td
-            'Metascore
-          td
-            == @movie.metascore
-        tr
-          td
-            'IMDb rating
-          td
-            == @movie.imbd_rating
-        tr
-          td
-            'IMDb votes
-          td
-            == @movie.imbd_votes
-        tr
-          td
-            'IMDb ID
-          td
-            == @movie.imbd_id
-        tr
-          td
-            'Film type
-          td
-            == @movie.film_type
-.link
-  '&#8592; Go to my search history
-.link
-  = link_to root_path
-    'Or try another search &#8594;
+.wrapper
+  .centered
+    .table-wrapper
+      h2
+        'Searching results for "#{@movie.title.capitalize}"
+      .table-inner
+        table
+          thead
+            tr
+              th Category
+              th Info
+          tbody
+            tr
+              td Year
+              td = @movie.year
+            tr
+              td Rated
+              td = @movie.rated
+            tr
+              td Released
+              td = @movie.released
+            tr
+              td Runtime
+              td = @movie.runtime
+            tr
+              td Director
+              td = @movie.director
+            tr
+              td Writer
+              td = @movie.writer
+            tr
+              td Actors
+              td  = @movie.actors
+            tr
+              td Plot
+              td = @movie.plot
+            tr
+              td Language
+              td = @movie.language
+            tr
+              td Country
+              td = @movie.country
+            tr
+              td Awards
+              td = @movie.awards
+            tr
+              td Poster
+              td = image_tag(@movie.poster, alt: "Movie poster")
+            tr
+              td Metascore
+              td = @movie.metascore
+            tr
+              td IMDb rating
+              td = @movie.imbd_rating
+            tr
+              td IMDb votes
+              td = @movie.imbd_votes
+            tr
+              td IMDb ID
+              td = @movie.imbd_id
+            tr
+              td Film type
+              td = @movie.film_type
+    - if logged_in?
+      .link
+        = link_to user_path(:id)
+          'Go to search history
+    .link
+      = link_to root_path
+        'Try another search

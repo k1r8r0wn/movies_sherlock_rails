@@ -1,22 +1,17 @@
 @import "bourbon";
 
-// Variables
+// Color variables
 
-$main: #8e9eab;
-$accent: #0b2653;
-$neutral: #eee;
-$dark: #000;
-$light: #fff;
+$white: #fff;
+$black: #000;
+$grey: #8e9eab;
+$blue: #4082f5;
+$dark-blue: #0b2653;
 $orange: #e4805a;
 $red: #ca5959;
 $green: #008e7d;
-$blue: blue;
-
-// Type scale
-
-$light-intense: #fff;
-$dark-intense: #000;
-$dark-secondary: rgba( $dark, .7 );
+$purple: #8484dd;
+$bege: #fff8dc;
 
 // Breakpoint mixin
 
@@ -41,14 +36,6 @@ $dark-secondary: rgba( $dark, .7 );
   left: 50%;
   text-align: center;
   @include transform(translate(-50%, -50%));
-}
-
-.red {
-  color: $red;
-}
-
-.green {
-  color: $green;
 }
 
 .container {
@@ -77,7 +64,7 @@ $dark-secondary: rgba( $dark, .7 );
 .errors {
   @extend .container;
   padding: 1em 0;
-  color: $light;
+  color: $white;
 
   &.error {
     background: $red;
@@ -88,7 +75,7 @@ $dark-secondary: rgba( $dark, .7 );
   }
 
   &.notice {
-    background: $blue;
+    background: $purple;
   }
 }
 
@@ -107,7 +94,7 @@ $dark-secondary: rgba( $dark, .7 );
 
     li {
       margin-bottom: 10px;
-      color: $light;
+      color: $white;
     }
   }
 }
@@ -116,11 +103,11 @@ $dark-secondary: rgba( $dark, .7 );
 
 html {
   height: 100%;
-  color: $dark-secondary;
-  background: $accent;
+  color: $black;
+  background: $dark-blue;
   @include background(
-                  linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%),
-                  linear-gradient(-45deg, #670d10 0%, #092756 100%)
+     linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%),
+     linear-gradient(-45deg, $red 0%, $dark-blue 100%)
   );
   background-repeat: no-repeat;
   background-position: center center;
@@ -130,13 +117,13 @@ html {
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 h1, .title {
   font-size: 4em;
-  color: #fff8dc;
+  color: $bege;
   text-shadow: rgb(255, 144, 39) 2px 2px;
   @include media(mobile) {
     font-size: 2em;
@@ -145,7 +132,7 @@ h1, .title {
 
 h2 {
   font-size: 2em;
-  color: $light;
+  color: $white;
   margin-bottom: 40px;
   @include media(mobile) {
     font-size: 1em;
@@ -154,12 +141,12 @@ h2 {
 }
 
 p {
-  color: $light;
+  color: $white;
   font-size: 1em;
 }
 
 a {
-  color: $light;
+  color: $white;
   text-decoration: none;
 
   &:hover {
@@ -215,20 +202,12 @@ li {
     width: 40px;
     height: 40px;
     border-radius: 50px;
-    background: $dark;
+    background: $black;
     margin: 0 10px;
     vertical-align: middle;
     @include media(mobile) {
       display: none;
     }
-  }
-}
-
-.log_out a {
-  color: $orange;
-
-  &:hover {
-    color: $light-intense;
   }
 }
 
@@ -255,14 +234,14 @@ form {
     border: 2px solid rgba(255, 255, 255, 0);
     margin-top: 15px;
     font-weight: bolder;
-    color: $light;
+    color: $white;
     @include placeholder {
-      color: $light;
+      color: $white;
     }
 
     &:focus {
       outline: 0;
-      border: 2px solid rgba(255, 255, 255, 0.5);
+      border: 2px solid $white;
       border-radius: 20px;
       background: rgba(0, 0, 0, 0);
     }
@@ -271,21 +250,21 @@ form {
   input[type='submit'] {
     max-width: 300px;
     background: $orange;
-    color: $light;
+    color: $white;
     height: 39px;
     border-radius: 20px;
     margin-top: 30px;
     border: none;
     text-transform: uppercase;
     font-size: .9em;
-    -webkit-appearance: none;
+      -webkit-appearance: none;
     @include media(mobile_low) {
       margin-top: 14px;
     }
 
     &:hover {
-      background: #4082f5;
-      box-shadow: 0 4px 35px -5px #4082f5;
+      background: $blue;
+      box-shadow: 0 4px 35px -5px $blue;
     }
 
     &:focus {
@@ -317,13 +296,13 @@ form {
 
   .file.focus {
     outline: 0;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid $grey;
     border-radius: 20px;
     background: transparent;
   }
 
   .file.focus::after {
-    border-top-color: #709AD0;
+    border-top-color: $blue;
   }
 
   /* hide and overlay when JavaScript is enabled */
@@ -347,7 +326,7 @@ form {
   /* show file value when selected */
 
   .file-value {
-    color: #709AD0;
+    color: $blue;
     display: none;
   }
 
@@ -380,6 +359,15 @@ form {
     margin: 40px auto;
   }
 
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 23px;
+    text-align: center;
+    @include media(tablet) {
+      font-size: 40px;
+    }
+  }
+
   .table-inner {
     overflow: scroll;
     max-height: 800px;
@@ -406,28 +394,18 @@ table {
     font-size: .8em;
   }
 
-  caption {
-    font-size: 1.5em;
-    color: $light-intense;
-    margin-bottom: 23px;
-    text-align: left;
-    @include media(tablet) {
-      font-size: 40px;
-    }
-  }
-
   th,
   td {
     padding: 1em;
     min-width: 100px;
     border: none;
-    background: $neutral;
+    background: $white;
     text-align: left;
   }
 
   th {
-    background: $main;
-    color: $light-intense;
+    background: $grey;
+    color: $white;
   }
 
   td:first-child {
@@ -436,7 +414,7 @@ table {
   }
 
   tr:nth-child(even) td {
-    background: lighten($neutral, 12%);
+    background: $white;
   }
 }
 
@@ -486,7 +464,7 @@ table {
   }
 
   span {
-    color: $light;
+    color: $white;
   }
 
   .movies_rating {
@@ -508,7 +486,7 @@ table {
 
 .search_history {
   p {
-    color: white;
+    color: $white;
   }
 
   ul {

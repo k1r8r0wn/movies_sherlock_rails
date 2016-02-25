@@ -1,10 +1,10 @@
 p#notice = notice
 
 p
-  strong First name:
+  strong First Name:
   = @user.first_name
 p
-  strong Last name:
+  strong Last Name:
   = @user.last_name
 p
   strong Email:
@@ -13,7 +13,7 @@ p
   strong Password:
   = @user.password
 p
-  strong Password confirmation:
+  strong Password Confirmation:
   = @user.password_confirmation
 
 = link_to 'Edit', edit_user_path(@user)

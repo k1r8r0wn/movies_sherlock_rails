@@ -13,6 +13,9 @@ html lang="en"
     = csrf_meta_tags
 
   body
+    ul.nav
+      li
+        = link_to 'Sign up', new_user_path
     section
       - flash.each do |type, message|
         .div[class="flash #{type}"]

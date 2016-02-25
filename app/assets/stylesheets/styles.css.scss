@@ -192,22 +192,12 @@ li {
   }
 }
 
-.auth_toolbar {
+/*  Navigation toolbar */
+
+.nav {
   position: absolute;
-  left: 1em;
-  top: 1em;
   z-index: 1;
-}
-
-/*  Authentication toolbar */
-
-.auth_toolbar {
-  top: 1.2em;
-  left: initial;
   right: 1em;
-  @include media(mobile) {
-    top: .1em;
-  }
 
   a {
     display: inline-block;

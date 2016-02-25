@@ -10,8 +10,11 @@ p
   strong Email:
   = @user.email
 p
-  strong Password digest:
-  = @user.password_digest
+  strong Password:
+  = @user.password
+p
+  strong Password confirmation:
+  = @user.password_confirmation
 
 = link_to 'Edit', edit_user_path(@user)
 '|

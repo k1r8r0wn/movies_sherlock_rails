@@ -50,15 +50,32 @@ $dark-secondary: rgba( $dark, .7 );
   color: $green;
 }
 
-.flash {
+.container {
   visibility: hidden;
   opacity: 0;
   width: 100%;
   position: absolute;
   padding: 1em 0;
   text-align: center;
+  @include animation(Container 5s cubic-bezier(0.45, 0.43, 0.52, 1.03));
+}
+
+@include keyframes(Container) {
+  0%, 100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  10%, 80% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.flash,
+.errors {
+  @extend .container;
+  padding: 1em 0;
   color: $light;
-  @include animation(Errors 5s cubic-bezier(0.45, 0.43, 0.52, 1.03));
 
   &.error {
     background: $red;
@@ -69,17 +86,13 @@ $dark-secondary: rgba( $dark, .7 );
   }
 }
 
-.errors_container {
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-  background: $red;
+.errors {
+  @extend .container;
   height: 100%;
+  padding: 0;
   border-radius: 12px;
+  background: $red;
   z-index: 1;
-  @include animation(Errors 5s cubic-bezier(0.45, 0.43, 0.52, 1.03));
 
   ul {
     width: 100%;
@@ -91,17 +104,6 @@ $dark-secondary: rgba( $dark, .7 );
       margin-bottom: 10px;
       color: $light;
     }
-  }
-}
-
-@include keyframes(Errors) {
-  0%, 100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-  10%, 80% {
-    opacity: 1;
-    visibility: visible;
   }
 }
 

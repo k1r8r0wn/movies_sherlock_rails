@@ -11,6 +11,10 @@ describe User do
     }
   }
 
+  context 'relationships' do
+    it { should have_many(:movies) }
+  end
+
   context 'validations' do
     let(:user) { User.new(valid_attributes) }
 

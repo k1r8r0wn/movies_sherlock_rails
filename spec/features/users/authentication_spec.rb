@@ -1,14 +1,8 @@
 require 'rails_helper'
 
 describe 'Logging In' do
-  it 'logs the user in and goes to the root path' do
-    User.create(
-      first_name: 'John',
-      last_name: 'Doe',
-      email: 'john@doe.com',
-      password: '12345',
-      password_confirmation: '12345'
-    )
+  it 'logs the user in and goes to the users path' do
+    create(:user)
     visit '/'
     click_link 'Sign in'
     fill_in 'Email', with: 'john@doe.com'

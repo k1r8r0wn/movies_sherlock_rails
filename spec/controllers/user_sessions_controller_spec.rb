@@ -15,15 +15,7 @@ RSpec.describe UserSessionsController, type: :controller do
 
   describe 'POST #create' do
     context 'with correct credentials' do
-      let!(:user) {
-        User.create(
-          first_name: 'John',
-          last_name: 'Doe',
-          email: 'john@doe.com',
-          password: '12345',
-          password_confirmation: '12345'
-        )
-      }
+      let!(:user) { create(:user) }
 
       it 'redirects to the users profile' do
         post :create, email: 'john@doe.com', password: '12345'
@@ -72,15 +64,7 @@ RSpec.describe UserSessionsController, type: :controller do
     end
 
     context 'with an incorrect password' do
-      let!(:user) {
-        User.create(
-            first_name: 'John',
-            last_name: 'Doe',
-            email: 'john@doe.com',
-            password: '12345',
-            password_confirmation: '12345'
-        )
-      }
+      let!(:user) { create(:user) }
       let(:email) { user.email }
       let(:password) { 'incorrect' }
       it_behaves_like 'denied login'

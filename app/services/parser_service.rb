@@ -2,7 +2,7 @@ class ParserService
   attr_reader :result
 
   def initialize
-    @result = []
+    @result = nil
   end
 
   def find_movie(movie_title)

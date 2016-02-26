@@ -1,0 +1,9 @@
+.wrapper
+  .centered
+    h1 Reset password
+    h2 Enter your email and we'll sent you password reset instructions
+    = form_tag new_password_reset_path do
+      = text_field_tag :email, params[:email], placeholder: 'Email', autofocus: 'autofocus'
+      = submit_tag 'Reset'
+    .link
+      = link_to 'Back to home page', root_path

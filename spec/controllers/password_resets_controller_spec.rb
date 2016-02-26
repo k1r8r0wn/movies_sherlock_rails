@@ -21,6 +21,10 @@ RSpec.describe PasswordResetsController, type: :controller do
         expect{ post :create, email: user.email; user.reload }.to change{ user.password_reset_token }
       end
 
+      it 'sends a password reset email' do
+        expect{ post :create, email: user.email }.to change(ActionMailer::Base.deliveries, :size)
+      end
+
       it 'sets the flash[:success] message' do
         post :create, email: user.email
         expect(flash[:success]).to match(/check your email./)

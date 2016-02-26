@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :movies
   resources :user_sessions, only: [:new, :create]
-  resources :password_resets, only: [:new, :create, :edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   root 'movies#index'
 end

@@ -5,8 +5,7 @@ class UserSessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:success] = 'You are logged in.'
-      redirect_to user_path(user)
+      redirect_to user_path(user), success: 'You are logged in.'
     else
       flash.now[:error] = 'There was a problem logging in. Please check your email and password.'
       render :new

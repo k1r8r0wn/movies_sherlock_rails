@@ -13,7 +13,7 @@ describe 'Signing up' do
     fill_in 'Email', with: 'john@doe.com'
     fill_in 'Password', with: '12345'
     fill_in 'Password Confirmation', with: '12345'
-    click_button 'Sign up'
+    click_button 'Create User'
 
     expect(User.count).to eq(1)
   end

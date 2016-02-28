@@ -1,8 +1,10 @@
-h1 Editing user
+.wrapper
+  .centered
+    h1 Edit profile
 
-== render 'form'
+    == render 'form'
 
-= link_to 'Show', @user
-'|
-= link_to 'Back', users_path
-
+    .link
+      = link_to 'Back to your profile', user_path(@user)
+    .link
+      = link_to 'Delete your profile', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }

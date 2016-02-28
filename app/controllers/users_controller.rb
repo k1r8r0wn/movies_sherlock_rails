@@ -14,8 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = 'Thanks for signing up!'
-      redirect_to root_path
+      redirect_to root_path, success: 'Thanks for signing up!'
     else
       render :new
     end
@@ -23,8 +22,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = 'User was successfully updated.'
-      redirect_to @user
+      redirect_to user_path(@user), notice: 'User was successfully updated.'
     else
       render :edit
     end
@@ -32,14 +30,14 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:notice] = 'User was successfully destroyed.'
-    redirect_to users_url
+    redirect_to root_path, notice: 'User was successfully destroyed.'
   end
 
   private
 
   def set_user
     @user = User.find(params[:id])
+    # redirect_to(root_url) unless @user == current_user
   end
 
   def user_params

@@ -13,7 +13,7 @@ describe 'Signing in' do
     expect(page).to have_content('You are logged in.')
   end
 
-  it 'displays the email address in the event of a failed login' do
+  it 'displays the email address in the event of a failed sign in' do
     visit new_user_session_path
     fill_in 'Email', with: 'john@doe.com'
     fill_in 'Password', with: 'incorrect'

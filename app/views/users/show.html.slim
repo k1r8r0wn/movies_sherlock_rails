@@ -11,13 +11,8 @@
     p
       strong Email:
       = @user.email
-    p
-      strong Password:
-      = @user.password
-    p
-      strong Password Confirmation:
-      = @user.password_confirmation
 
-    = link_to 'Edit', edit_user_path(@user)
-    '|
-    = link_to 'Back', users_path
+    .link
+      = link_to 'Edit your profile', edit_user_path(@user)
+    .link
+      = link_to 'Back to home page', root_path

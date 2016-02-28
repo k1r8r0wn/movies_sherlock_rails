@@ -60,7 +60,7 @@ RSpec.describe UsersController, type: :controller do
         expect(assigns(:user)).to be_persisted
       end
 
-      it 'redirects to the created user' do
+      it 'redirects to the root path' do
         post :create, {:user => valid_attributes}, valid_session
         expect(response).to redirect_to(root_path)
       end
@@ -116,7 +116,7 @@ RSpec.describe UsersController, type: :controller do
       it 'redirects to the user' do
         user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
-        expect(response).to redirect_to(user)
+        expect(response).to redirect_to(user_path(user))
       end
     end
 
@@ -143,10 +143,10 @@ RSpec.describe UsersController, type: :controller do
       }.to change(User, :count).by(-1)
     end
 
-    it 'redirects to the users list' do
+    it 'redirects to root path' do
       user = User.create! valid_attributes
       delete :destroy, {:id => user.to_param}, valid_session
-      expect(response).to redirect_to(users_url)
+      expect(response).to redirect_to(root_path)
     end
   end
 end

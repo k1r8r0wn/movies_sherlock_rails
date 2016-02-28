@@ -1,31 +1,31 @@
 .wrapper
   .centered
-    /- if current_user.user_role == 'admin'
-    .site_statistics
-      .title Site statistics
-      .block
-        h2
-          == @users
-        span Registered user(-s)
-      - if @movies_search == 0
-        .block
-          h2 &#9785;
-          span Movies database is empty
-      - else
+    - if current_user.user_role == 'admin'
+      .site_statistics
+        .title Site statistics
         .block
           h2
-            == @all_movies
-          span Movie(-s) in database
-        .block
-          h2
-            == @unique_movies
-          span Unique movie(-s)
-        .block
-          ul.movies_rating
-            - @popular_movies.each.with_index(1) do |movie, index|
-              li
-                '#{index}. #{movie[0]} - #{movie[1]}
-          span Top-5 popular movie searches
+            == @all_users
+          span Registered user(-s)
+        - if @movies_search == 0
+          .block
+            h2 &#9785;
+            span Movies database is empty
+        - else
+          .block
+            h2
+              == @all_movies
+            span Movie(-s) in database
+          .block
+            h2
+              == @unique_movies
+            span Unique movie(-s)
+          .block
+            ul.movies_rating
+              - @popular_movies.each.with_index(1) do |movie, index|
+                li
+                  '#{index}. #{movie[0]} - #{movie[1]}
+            span Top-5 popular movie searches
 
     .my_searches
       - if @movies_search == 0

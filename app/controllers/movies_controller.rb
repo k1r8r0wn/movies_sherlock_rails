@@ -1,7 +1,18 @@
 class MoviesController < ApplicationController
+  before_action :require_user, only: [:show]
+
   def index; end
 
   def new; end
+
+  def show
+    @movie = Movie.find(params[:id])
+    if @movie.user_id == current_user.id
+      render :show
+    else
+      redirect_to my_movies_user_path, notice: "You haven't got movie with this id."
+    end
+  end
 
   def create
     @movie_title = params[:movie_title]
@@ -19,6 +30,24 @@ class MoviesController < ApplicationController
       if parser_result['Title'].nil?
         flash.now[:error] = "Sorry, but there is no results for \"#{@movie_title}\"."
         render :index
+
+      elsif current_user && Movie.where(title: parser_result['Title'], user_id: current_user.id).present?
+        @movie = Movie.find_by(title: parser_result['Title'], user_id: current_user.id)
+        @movie_id = @movie.id
+        @movie.increment!(:search_count)
+        render :show
+
+      elsif current_user
+        @movie = Movie.new(parser.prepare_to_model)
+        @movie.user_id = current_user.id
+
+        if @movie.save
+          @movie.increment!(:search_count)
+          render :show
+        else
+          flash.now[:error] = 'Something goes wrong!'
+          render :index
+        end
 
       else
         @movie = ShowFilm.new(parser.prepare_to_model)

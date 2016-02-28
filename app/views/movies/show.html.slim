@@ -63,7 +63,7 @@
               td = @movie.film_type
     - if logged_in?
       .link
-        = link_to user_path(:id)
+        = link_to user_path(current_user)
           'Go to search history
     .link
       = link_to root_path

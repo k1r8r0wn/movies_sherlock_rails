@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   before_save :downcase_email
 
+  mount_uploader :avatar, AvatarUploader
+
   def downcase_email
     self.email = email.downcase
   end

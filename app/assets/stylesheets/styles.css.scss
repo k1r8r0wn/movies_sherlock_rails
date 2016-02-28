@@ -202,7 +202,7 @@ li {
     width: 40px;
     height: 40px;
     border-radius: 50px;
-    background: $black;
+    background: $white;
     margin: 0 10px;
     vertical-align: middle;
     @include media(mobile) {
@@ -274,9 +274,9 @@ form {
 
   .file {
     @extend input;
-    width: inherit;
+    //width: inherit;
     line-height: 1;
-    padding: 0.65em;
+    //padding: 0.65em;
     position: relative;
     text-align: center;
     transition: all 0.5s ease-in-out;
@@ -296,7 +296,7 @@ form {
 
   .file.focus {
     outline: 0;
-    border: 2px solid $grey;
+    border: 2px solid $white;
     border-radius: 20px;
     background: transparent;
   }
@@ -326,7 +326,7 @@ form {
   /* show file value when selected */
 
   .file-value {
-    color: $blue;
+    color: #709ad0;
     display: none;
   }
 

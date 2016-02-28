@@ -177,7 +177,7 @@ GEM
       activesupport (>= 3.1, < 5.0)
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
-    spring (1.6.3)
+    spring (1.6.4)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -213,14 +213,14 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bourbon (~> 4.2, >= 4.2.6)
-  byebug
+  byebug (~> 8.2, >= 8.2.2)
   capybara (~> 2.6, >= 2.6.2)
   capybara-email (~> 2.5)
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.1.0)
   factory_girl_rails (~> 4.6)
   jbuilder (~> 2.0)
-  jquery-rails
+  jquery-rails (~> 4.1)
   json (~> 1.8, >= 1.8.3)
   pg (~> 0.15)
   rails (= 4.2.5)
@@ -230,8 +230,8 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   shoulda-matchers (~> 3.1, >= 3.1.1)
   slim-rails (~> 3.0, >= 3.0.1)
-  spring
-  turbolinks
+  spring (~> 1.6, >= 1.6.4)
+  turbolinks (~> 2.5, >= 2.5.3)
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 

@@ -8,9 +8,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'bourbon', '~> 4.2', '>= 4.2.6'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.1'
 gem 'slim-rails', '~> 3.0', '>= 3.0.1'
-gem 'turbolinks'
+gem 'turbolinks', '~> 2.5', '>= 2.5.3'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
@@ -19,14 +19,14 @@ gem 'json', '~> 1.8', '>= 1.8.3'
 gem 'carrierwave', '~> 0.10.0'
 
 group :development, :test do
-  gem 'byebug'
+  gem 'byebug', '~> 8.2', '>= 8.2.2'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
   gem 'factory_girl_rails', '~> 4.6'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
-  gem 'spring'
+  gem 'spring', '~> 1.6', '>= 1.6.4'
 end
 
 group :test do

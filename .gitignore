@@ -19,3 +19,4 @@
 # Other
 .DS_Store
 .rspec
+public/uploads

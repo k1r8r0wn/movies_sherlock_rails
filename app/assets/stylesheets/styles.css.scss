@@ -202,8 +202,8 @@ li {
     width: 40px;
     height: 40px;
     border-radius: 50px;
+    border: 2px solid white;
     background: $white;
-    margin: 0 10px;
     vertical-align: middle;
     @include media(mobile) {
       display: none;
@@ -319,8 +319,9 @@ form {
     position: absolute;
     top: 0;
     width: 100%;
-    /* strange input behavior in IE */
-    font-size: 10em;
+    margin: auto;
+    right: 0;
+    padding: 0;
   }
 
   /* show file value when selected */

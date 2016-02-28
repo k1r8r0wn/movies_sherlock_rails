@@ -1,6 +1,6 @@
 # Input for avatar functionality
 
-$(document).ready ->
+$(document).on 'ready page:load', ->
   # For each .file element
   $('.file').each ->
     # Save some elements as variables

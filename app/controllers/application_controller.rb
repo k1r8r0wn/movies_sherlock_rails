@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :current_user
 
   protect_from_forgery with: :exception
-  add_flash_types :success
 
   def logged_in?
     current_user

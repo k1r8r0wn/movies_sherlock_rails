@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'rest-client', '~> 1.8'
 gem 'json', '~> 1.8', '>= 1.8.3'
+gem 'carrierwave', '~> 0.10.0'
 
 group :development, :test do
   gem 'byebug'

@@ -1,0 +1,6 @@
+li
+  = image_tag current_user.avatar, alt: "User's avatar", class: 'avatar'
+li
+  = link_to t('main.auth_toolbar.greetings') + current_user.first_name, user_path(current_user)
+li
+  = link_to t('main.auth_toolbar.sign_out'), sign_out_path, method: :delete

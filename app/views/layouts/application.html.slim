@@ -14,18 +14,16 @@ html lang="en"
 
   body
     ul.nav
-      - if logged_in?
+      - if I18n.locale == :en
         li
-          = image_tag current_user.avatar, alt: "User's avatar", class: 'avatar'
-        li
-          = link_to 'Hello, ' + current_user.first_name, user_path(current_user)
-        li
-          = link_to 'Sign out', sign_out_path, method: :delete
+          = link_to 'RU', locale: :ru
       - else
         li
-          = link_to 'Sign in', sign_in_path
-        li
-          = link_to 'Sign up', sign_up_path
+          = link_to 'EN', locale: :en
+      - if logged_in?
+        = render 'layouts/signed_in'
+      - else
+        = render 'layouts/signed_out'
     section
       - flash.each do |type, message|
         .div[class="flash #{type}"]

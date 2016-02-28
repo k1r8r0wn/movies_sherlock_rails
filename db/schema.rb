@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228133252) do
+ActiveRecord::Schema.define(version: 20160228144357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 20160228133252) do
     t.string   "awards"
     t.string   "poster"
     t.string   "metascore"
-    t.string   "imbd_rating"
-    t.string   "imbd_votes"
-    t.string   "imbd_id"
+    t.string   "imdb_rating"
+    t.string   "imdb_votes"
+    t.string   "imdb_id"
     t.string   "film_type"
     t.string   "response"
     t.string   "error"

@@ -9,7 +9,7 @@ describe 'Signing in' do
     fill_in 'Password', with: '12345'
     click_button 'Sign in'
 
-    expect(page).to have_content('My personal page')
+    expect(page).to have_content('My search history')
     expect(page).to have_content('You are logged in.')
   end
 

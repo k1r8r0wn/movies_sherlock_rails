@@ -5,8 +5,8 @@ describe 'Signing up' do
     expect(User.count).to eq(0)
 
     visit '/'
-    expect(page).to have_content('Sign up')
-    within ('.nav') { click_link 'Sign up' }
+    expect(page).to have_content('Sign Up')
+    within ('.nav') { click_link 'Sign Up' }
 
     fill_in 'First Name', with: 'John'
     fill_in 'Last Name', with: 'Doe'

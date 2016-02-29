@@ -4,7 +4,7 @@ describe 'Signing in' do
   it 'logs the user in and goes to the users path' do
     create(:user)
     visit '/'
-    click_link 'Sign in'
+    click_link 'Sign In'
     fill_in 'Email', with: 'john@doe.com'
     fill_in 'Password', with: '12345'
     click_button 'Sign in'

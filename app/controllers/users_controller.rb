@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def edit; end
 
-  def show;
+  def show
     @all_users = User.count
     @all_movies = Movie.count
     @unique_movies = Movie.uniq.count(:title)

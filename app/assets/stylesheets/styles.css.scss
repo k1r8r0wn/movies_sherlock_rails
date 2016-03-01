@@ -66,7 +66,8 @@ $bege: #fff8dc;
   padding: 1em 0;
   color: $white;
 
-  &.error {
+  &.error,
+  &.alert {
     background: $red;
   }
 
@@ -216,6 +217,10 @@ li {
 form {
   position: relative;
 
+  .field {
+    margin-top: 15px;
+  }
+
   input,
   input[type='submit'] {
     width: 50%;
@@ -232,7 +237,7 @@ form {
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0);
-    margin-top: 15px;
+    //margin-top: 15px;
     font-weight: bolder;
     color: $white;
     @include placeholder {
@@ -270,6 +275,20 @@ form {
     &:focus {
       outline: none;
     }
+  }
+
+  input[type='checkbox'] {
+    display: inline-block;
+    width: initial;
+    margin-right: 12px;
+    height: initial;
+  }
+
+  label {
+    display: inline-block;
+    color: $white;
+    font-weight: 200;
+    font-size: .7em;
   }
 
   .file {
@@ -421,7 +440,7 @@ table {
 
 /* Links */
 
-.link,
+.links,
 .make_with_love {
   text-align: center;
   @include media(mobile_low) {
@@ -435,7 +454,7 @@ table {
   }
 }
 
-.link {
+.links {
   margin-top: 20px;
 }
 

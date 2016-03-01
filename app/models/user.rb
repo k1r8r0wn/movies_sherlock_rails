@@ -30,5 +30,3 @@ class User < ActiveRecord::Base
     self.email = email.downcase
   end
 end
-
-#4285f4

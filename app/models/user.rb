@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
+         :omniauthable, :omniauth_providers => [:twitter, :google_oauth2, :github]
 
   mount_uploader :avatar, AvatarUploader
 

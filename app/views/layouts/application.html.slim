@@ -14,12 +14,7 @@ html lang="en"
 
   body
     ul.nav
-      - if I18n.locale == :en
-        li
-          = link_to 'RU', locale: :ru
-      - else
-        li
-          = link_to 'EN', locale: :en
+      = render 'layouts/locale'
       - if logged_in?
         = render 'layouts/signed_in'
       - else

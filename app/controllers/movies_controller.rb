@@ -1,9 +1,11 @@
 class MoviesController < ApplicationController
   before_filter :authenticate_user!, only: [:show]
+  after_action :verify_authorized, only: [:show]
 
   def index; end
 
   def show
+    authorize self
     @movie = Movie.find(params[:id])
     if @movie.user_id == current_user.id
       render :show

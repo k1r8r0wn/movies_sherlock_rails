@@ -3,19 +3,29 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 gem 'rails', '4.2.5'
+
 gem 'pg', '~> 0.15'
+
+gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'devise', '~> 3.5', '>= 3.5.6'
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'turbolinks', '~> 2.5', '>= 2.5.3'
+gem 'jquery-rails', '~> 4.1'
+gem 'uglifier', '>= 1.3.0'
+
+gem 'coffee-rails', '~> 4.1.0'
+gem 'slim-rails', '~> 3.0', '>= 3.0.1'
+
 gem 'sass-rails', '~> 5.0'
 gem 'bourbon', '~> 4.2', '>= 4.2.6'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails', '~> 4.1'
-gem 'slim-rails', '~> 3.0', '>= 3.0.1'
-gem 'turbolinks', '~> 2.5', '>= 2.5.3'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'bcrypt', '~> 3.1.7'
-gem 'rest-client', '~> 1.8'
+
 gem 'json', '~> 1.8', '>= 1.8.3'
+gem 'jbuilder', '~> 2.0'
+
+gem 'rest-client', '~> 1.8'
+
 gem 'carrierwave', '~> 0.10.0'
 
 group :development, :test do

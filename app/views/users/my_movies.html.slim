@@ -1,13 +1,11 @@
 .wrapper
   .centered.search_history
-    .title
-      'My movies
-    p
-      'Click on the movie title to see it's info
+    .title My movies
+    p Click on the movie title to see it's info
+
     ul
       - @user_movies.each do |movie|
         li
           = link_to movie.title, movie_path(movie)
     .links
-      .link
-        = link_to 'Go back', user_path(current_user)
+      = link_to 'Go back', :back

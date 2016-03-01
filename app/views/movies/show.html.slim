@@ -1,8 +1,7 @@
 .wrapper
   .centered
     .table-wrapper
-      h2
-        'Searching results for "#{@movie.title.capitalize}"
+      h2 Searching results for "#{@movie.title.capitalize}"
       .table-inner
         table
           thead
@@ -61,10 +60,7 @@
             tr
               td Film type
               td = @movie.film_type
-    - if logged_in?
-      .link
-        = link_to user_path(current_user)
-          'Go to search history
-    .link
-      = link_to root_path
-        'Try another search
+      .links
+        - if user_signed_in?
+          = link_to 'Go to my search history', user_path(current_user)
+        = link_to 'Try another search', root_path

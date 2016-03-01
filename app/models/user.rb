@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-
-  has_many :movies,  dependent: :destroy
+  has_many :movies, dependent: :destroy
 
   validates :first_name, :last_name, presence: true
   devise :database_authenticatable, :registerable,

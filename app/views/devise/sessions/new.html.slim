@@ -1,15 +1,16 @@
 .wrapper
   .centered
     h1 Sign In
+
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = devise_error_messages!
 
       .field
         = f.text_field :email, placeholder: 'Email', autofocus: true
+
       .field
         = f.password_field :password, placeholder: 'Password', autocomplete: 'off'
-      .field
-        = f.password_field :password_confirmation, placeholder: 'Password Confirmation', autocomplete: 'off'
+
       - if devise_mapping.rememberable?
         .field
           = f.check_box :remember_me
@@ -19,5 +20,5 @@
         = f.submit 'Sign In'
 
     .links
-      = render "devise/shared/links"
+      = render 'devise/shared/links'
       = link_to 'Back to home page', root_path

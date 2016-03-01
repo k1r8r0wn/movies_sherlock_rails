@@ -3,8 +3,6 @@ class MoviesController < ApplicationController
 
   def index; end
 
-  def new; end
-
   def show
     @movie = Movie.find(params[:id])
     if @movie.user_id == current_user.id

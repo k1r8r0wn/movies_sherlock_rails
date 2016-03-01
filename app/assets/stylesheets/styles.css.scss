@@ -100,6 +100,10 @@ $bege: #fff8dc;
   }
 }
 
+.red {
+  color: $red;
+}
+
 /* Basic setup */
 
 html {
@@ -153,6 +157,15 @@ a {
   &:hover {
     color: $orange;
   }
+}
+
+i {
+  display: inline-block;
+  max-width: 200px;
+  margin-bottom: 15px;
+  color: $orange;
+  font-weight: 200;
+  font-size: .7em;
 }
 
 li {
@@ -237,7 +250,6 @@ form {
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0);
-    //margin-top: 15px;
     font-weight: bolder;
     color: $white;
     @include placeholder {
@@ -267,6 +279,11 @@ form {
       margin-top: 14px;
     }
 
+    &.cancel_account {
+      margin-top: 0;
+      background: $red;
+    }
+
     &:hover {
       background: $blue;
       box-shadow: 0 4px 35px -5px $blue;
@@ -284,7 +301,7 @@ form {
     height: initial;
   }
 
-  label {
+  label{
     display: inline-block;
     color: $white;
     font-weight: 200;
@@ -293,9 +310,7 @@ form {
 
   .file {
     @extend input;
-    //width: inherit;
     line-height: 1;
-    //padding: 0.65em;
     position: relative;
     text-align: center;
     transition: all 0.5s ease-in-out;
@@ -448,14 +463,20 @@ table {
   }
 
   a {
+    display: block;
+    margin-bottom: 10px;
     font-weight: 200;
     font-size: .7em;
     text-transform: uppercase;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
 .links {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .make_with_love {
@@ -496,10 +517,6 @@ table {
       color: $orange;
     }
   }
-}
-
-.links {
-  margin-top: 40px;
 }
 
 /* Search history */

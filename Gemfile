@@ -10,6 +10,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise', '~> 3.5', '>= 3.5.6'
 gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
+gem 'omniauth-google-oauth2', '~> 0.3.1'
 gem 'pundit', '~> 1.1'
 
 

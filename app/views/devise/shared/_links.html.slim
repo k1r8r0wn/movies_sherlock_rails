@@ -2,7 +2,7 @@
   .omniauth
     p You can also sign in with:
     - resource_class.omniauth_providers.each do |provider|
-      = link_to "#{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "sign_in #{provider}"
+      = link_to '', omniauth_authorize_path(resource_name, provider), class: "sign_in #{provider}"
 
 - if controller_name != 'sessions'
   = link_to 'Sign in', new_session_path(resource_name)

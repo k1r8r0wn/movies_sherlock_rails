@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:twitter]
+         :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
 
   mount_uploader :avatar, AvatarUploader
 
@@ -30,3 +30,5 @@ class User < ActiveRecord::Base
     self.email = email.downcase
   end
 end
+
+#4285f4

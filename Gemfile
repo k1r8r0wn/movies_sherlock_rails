@@ -9,7 +9,7 @@ gem 'pg', '~> 0.15'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise', '~> 3.5', '>= 3.5.6'
-gem 'bcrypt', '~> 3.1.7'
+gem 'pundit', '~> 1.1'
 
 gem 'turbolinks', '~> 2.5', '>= 2.5.3'
 gem 'jquery-rails', '~> 4.1'

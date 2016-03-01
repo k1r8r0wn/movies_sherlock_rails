@@ -113,6 +113,8 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
     pg (0.18.4)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -223,7 +225,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
   bourbon (~> 4.2, >= 4.2.6)
   byebug (~> 8.2, >= 8.2.2)
   capybara (~> 2.6, >= 2.6.2)
@@ -236,6 +237,7 @@ DEPENDENCIES
   jquery-rails (~> 4.1)
   json (~> 1.8, >= 1.8.3)
   pg (~> 0.15)
+  pundit (~> 1.1)
   rails (= 4.2.5)
   rest-client (~> 1.8)
   rspec-rails (~> 3.4, >= 3.4.2)

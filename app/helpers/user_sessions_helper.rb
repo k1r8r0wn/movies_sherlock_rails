@@ -1,1 +1,0 @@
-module UserSessionsHelper; end

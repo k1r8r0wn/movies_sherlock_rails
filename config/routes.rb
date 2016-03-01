@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get '/sign_up' => 'users#new', as: :sign_up
-  get '/sign_in' => 'user_sessions#new', as: :sign_in
-  delete '/sign_out' => 'user_sessions#destroy', as: :sign_out
+  devise_for :users
 
   resources :users do
     member do
@@ -9,9 +7,6 @@ Rails.application.routes.draw do
     end
   end
   resources :movies
-  resources :user_sessions, only: [:new, :create]
-  resources :password_resets, only: [:new, :create, :edit, :update]
-
 
   scope '(:locale)', :locale => /en|ru/ do
     root 'movies#index'

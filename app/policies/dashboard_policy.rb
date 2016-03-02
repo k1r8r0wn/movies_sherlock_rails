@@ -1,4 +1,4 @@
-class SiteStatisticsControllerPolicy
+class DashboardPolicy
   attr_reader :user, :model
 
   def initialize(user, model)

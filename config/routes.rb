@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
   resources :movies, only: [:index, :create, :show]
-  resources :site_statistics, only: [:index]
+  resources :dashboard, only: [:index]
 
   scope '(:locale)', :locale => /en|ru/ do
     root 'movies#index'

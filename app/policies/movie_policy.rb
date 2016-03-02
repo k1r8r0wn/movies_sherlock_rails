@@ -1,4 +1,4 @@
-class MoviesControllerPolicy
+class MoviePolicy
   attr_reader :user, :model
 
   def initialize(user, model)
@@ -7,6 +7,6 @@ class MoviesControllerPolicy
   end
 
   def show?
-    user.user? || user.admin?
+    true
   end
 end

@@ -1,9 +1,9 @@
-class SiteStatisticsController < ApplicationController
+class DashboardController < ApplicationController
   before_filter :authenticate_user!
   after_action :verify_authorized
 
   def index
-    authorize self
+    authorize :dashboard, :index?
     @all_users = User.count
     @all_movies = Movie.count
     @unique_movies = Movie.uniq.count(:title)

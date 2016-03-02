@@ -5,8 +5,8 @@ class MoviesController < ApplicationController
   def index; end
 
   def show
-    authorize self
     @movie = Movie.find(params[:id])
+    authorize @movie
     if @movie.user_id == current_user.id
       render :show
     else

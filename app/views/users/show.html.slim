@@ -22,4 +22,4 @@
           = link_to 'Go home & find more', root_path
           = link_to 'Edit your profile', edit_user_registration_path(current_user)
           - if current_user.admin?
-            = link_to 'Site statistics', site_statistics_path, class: 'red'
+            = link_to 'Dashboard', dashboard_index_path, class: 'red'

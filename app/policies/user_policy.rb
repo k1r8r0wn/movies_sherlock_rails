@@ -1,20 +1,16 @@
 class UserPolicy
-  attr_reader :user, :movie
+  attr_reader :user, :model
 
-  def initialize(user, movie)
+  def initialize(user, model)
     @user  = user
-    @movie = movie
+    @model = model
   end
 
   def show?
-    user.user? || user.admin?
+    true
   end
 
   def my_movies?
-    user.user? || user.admin?
-  end
-
-  def site_statistics?
-    user.admin?
+    true
   end
 end

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :movies, dependent: :destroy
+  has_many :providers, dependent: :destroy
 
   after_initialize :set_default_role, :if => :new_record?
   before_save :downcase_email
@@ -25,7 +26,7 @@ class User < ActiveRecord::Base
   def set_default_role
     self.role ||= :user
   end
-
+  
   def downcase_email
     self.email = email.downcase
   end

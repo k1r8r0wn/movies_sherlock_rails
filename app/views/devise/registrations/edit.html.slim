@@ -30,9 +30,10 @@
       .field
         = f.password_field :password_confirmation, placeholder: 'Password Confirmation', autocomplete: 'off'
 
-      .field
-        i Your current password is needed to confirm your changes
-        = f.password_field :current_password, placeholder: 'Current Password', autocomplete: 'off'
+      - if f.object.encrypted_password.present?
+        .field
+          i Your current password is needed to confirm your changes
+          = f.password_field :current_password, placeholder: 'Current Password', autocomplete: 'off'
 
       .actions
         = f.submit 'Update'

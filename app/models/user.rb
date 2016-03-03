@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   enum role: [:user, :vip, :admin]
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:twitter, :google_oauth2, :github]
@@ -16,11 +16,47 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
+      user.email      = auth.info.email
+      user.first_name = auth.info.first_name || auth.info.nickname
+      user.last_name  = auth.info.last_name
+      user.provider   = auth.provider
+      user.uid        = auth.uid
+      user.save
     end
+  end
+
+  #persist user in session on validation error with omniauth
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |user|
+        user.attributes = params
+        user.valid?
+        session["count_errors"] = session["count_errors"] + 1
+        session["devise.user_attributes"] = nil if session["count_errors"] == 2
+      end
+    else
+      super
+    end
+  end
+
+  def password_required?
+    super && self.provider.blank?
+  end
+
+  def email_required?
+    super && self.provider.blank?
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
+
+  def has_no_password?
+    self.encrypted_password.blank?
   end
 
   def set_default_role
@@ -28,6 +64,8 @@ class User < ActiveRecord::Base
   end
   
   def downcase_email
-    self.email = email.downcase
+    if email.present?
+      self.email = email.downcase
+    end
   end
 end

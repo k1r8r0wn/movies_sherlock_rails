@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_filter :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, only: [:show]
   after_action :verify_authorized, only: [:show]
 
   def index; end

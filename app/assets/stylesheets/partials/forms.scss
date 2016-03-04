@@ -1,0 +1,150 @@
+/* Form */
+
+form {
+  position: relative;
+
+  .field {
+    margin-top: 15px;
+  }
+
+  input,
+  input[type='submit'] {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    transition: all 0.5s ease-in-out;
+  }
+
+  input {
+    min-width: 200px;
+    max-width: 400px;
+    height: 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0);
+    font-weight: bolder;
+    color: $white;
+    @include placeholder {
+      color: $white;
+    }
+
+    &:focus {
+      outline: 0;
+      border: 2px solid $white;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0);
+    }
+  }
+
+  input[type='submit'] {
+    max-width: 300px;
+    background: $orange;
+    color: $white;
+    height: 39px;
+    border-radius: 20px;
+    margin-top: 30px;
+    border: none;
+    text-transform: uppercase;
+    font-size: .9em;
+    -webkit-appearance: none;
+    @include media(mobile_low) {
+      margin-top: 14px;
+    }
+
+    &.cancel_account {
+      margin-top: 0;
+      background: $red;
+    }
+
+    &:hover {
+      background: $blue;
+      box-shadow: 0 4px 35px -5px $blue;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input[type='checkbox'] {
+    display: inline-block;
+    width: initial;
+    min-width: 0;
+    height: initial;
+    margin-right: 12px;
+  }
+
+  label{
+    display: inline-block;
+    color: $white;
+    font-weight: 200;
+    font-size: .7em;
+  }
+
+  .file {
+    @extend input;
+    line-height: 1;
+    position: relative;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    font-size: 0.9em;
+  }
+
+  .file.active .file-label {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .file.focus {
+    outline: 0;
+    border: 2px solid $white;
+    border-radius: 20px;
+    background: transparent;
+  }
+
+  .file.focus::after {
+    border-top-color: $blue;
+  }
+
+  /* hide and overlay when JavaScript is enabled */
+
+  .file input,
+  .file input::-webkit-file-upload-button {
+    cursor: pointer;
+  }
+
+  .file input {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin: auto;
+    right: 0;
+    padding: 0;
+  }
+
+  /* show file value when selected */
+
+  .file-value {
+    color: #709ad0;
+    display: none;
+  }
+
+  .file-value::before {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGhlaWdodD0iMTAwIiB3aWR0aD0iMTAwIj48cGF0aCBmaWxsPSIjNzA5QUQwIiBkPSJNMTQgMkg2Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDEyYzEuMSAwIDItLjkgMi0yVjhsLTYtNnptNC41IDdIMTNWMy41TDE4LjUgOXoiLz48L3N2Zz4NCg==);
+    @extend .background_image;
+  }
+
+  .file.active .file-value {
+    display: inline;
+  }
+}

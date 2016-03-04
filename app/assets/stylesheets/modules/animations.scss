@@ -1,0 +1,21 @@
+/* Animations */
+
+@include keyframes(Container) {
+  0%, 100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  10%, 80% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@include keyframes(Rotate) {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(360deg));
+  }
+}

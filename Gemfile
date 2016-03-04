@@ -23,6 +23,7 @@ gem 'slim-rails', '~> 3.0', '>= 3.0.1'
 
 gem 'sass-rails', '~> 5.0'
 gem 'foundation-rails', '~> 6.2'
+gem 'foundation-icons-sass-rails', '~> 3.0'
 gem 'bourbon', '~> 4.2', '>= 4.2.6'
 
 gem 'json', '~> 1.8', '>= 1.8.3'
@@ -41,6 +42,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring', '~> 1.6', '>= 1.6.4'
+  gem 'quiet_assets', '~> 1.1'
 end
 
 group :test do

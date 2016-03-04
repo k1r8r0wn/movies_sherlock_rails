@@ -1,30 +1,98 @@
-/*  Navigation toolbar */
+/* Header */
 
-.nav {
-  position: absolute;
-  z-index: 1;
-  right: 1em;
+.title-bar {
+  @include media(mobile) {
+    margin-bottom: 3em;
+  }
+}
 
+/* Logo */
+
+.logo-wrapper {
+  margin: .5em 0;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin: 0 .5em;
+
+  @include animation(Rotate 3s 2s cubic-bezier(0.45, 0.43, 0.52, 1.03));
+  @include media(mobile) {
+    margin: .5em 0;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Menu */
+
+.menu-wrapper {
+  margin: 1em 0;
+  text-align: right;
+  @include media(mobile) {
+    margin: 1.2em 0;
+  }
+}
+
+.menu {
   li {
     display: inline-block;
-    margin: 0 10px;
+    margin: 0 .4em;
+
+    a {
+      padding: 0.5em;
+      color: $bege;
+    }
+  }
+}
+
+.menu-icon {
+  font-size: 2em;
+  @include media(mobile) {
+    font-size: 1.5em;
+  }
+
+  i {
+    color: $bege;
+  }
+}
+
+.off-canvas {
+  ul {
+    margin: 1.3em 0 0;
+  }
+
+  li {
+    text-align: center;
+    padding: 1em;
     @include media(mobile) {
-      display: block;
-      margin: 10px 0;
-      text-align: right;
+      padding: .6em;
     }
   }
 
   .avatar {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    border: 2px solid white;
-    background: $white;
-    vertical-align: middle;
-    @include media(mobile) {
-      display: none;
-    }
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
   }
+}
+
+.avatar {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: 2px solid white;
+  background: $white;
+  vertical-align: middle;
+}
+
+.desktop-nav {
+  display: none;
+  background: $orange;
+  width: 300px;
+  height: 300px;
+  padding: .5em;
 }

@@ -1,5 +1,5 @@
-.wrapper
-  .centered
+.row.text-center
+  .small-12.columns
     h1 Edit #{resource_name.to_s.humanize}
 
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
@@ -24,7 +24,7 @@
         h2.red Currently waiting confirmation for: #{resource.unconfirmed_email}
 
       .field
-        i Leave blank if you don't want to change it
+        p Leave blank if you don't want to change it
         = f.password_field :password, placeholder: 'New Password', autocomplete: 'off'
 
       .field
@@ -32,16 +32,16 @@
 
       - if f.object.encrypted_password.present?
         .field
-          i Your current password is needed to confirm your changes
+          p Your current password is needed to confirm your changes
           = f.password_field :current_password, placeholder: 'Current Password', autocomplete: 'off'
 
       .actions
         = f.submit 'Update'
 
-
+.row.text-center
+  .small-12.columns
     h2 Unhappy? You can cancel your account
     .links
       = button_to 'Here', registration_path(resource_name), data: { confirm: 'Attention! This is irreversible process. Are you sure you want to continue?' }, method: :delete, class: 'cancel_account'
-
     .links
       = link_to 'Go back', :back

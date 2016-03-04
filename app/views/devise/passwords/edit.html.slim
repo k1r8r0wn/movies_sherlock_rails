@@ -1,22 +1,22 @@
-.wrapper
-  .centered
-    h1 Change your password
+.centered.content
+  .row
+    .small-12.columns
+      h1 Change your password
 
-    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-      = devise_error_messages!
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = devise_error_messages!
 
-      = f.hidden_field :reset_password_token
+        = f.hidden_field :reset_password_token
 
-      .field
-        - if @minimum_password_length
-          = f.password_field :password, placeholder: "Password (minimum #{@minimum_password_length} characters)", autofocus: true, autocomplete: 'off'
+        .field
+          - if @minimum_password_length
+            = f.password_field :password, placeholder: "Password (minimum #{@minimum_password_length} characters)", autofocus: true, autocomplete: 'off'
 
         .field
           = f.password_field :password_confirmation, placeholder: 'Password Confirmation', autocomplete: 'off'
 
-      .actions
-        = f.submit 'Change'
+        .actions
+          = f.submit 'Change'
 
-    .links
-      = render 'devise/shared/links'
-      = link_to 'Go to home page', root_path
+      .links
+        = render 'devise/shared/links'

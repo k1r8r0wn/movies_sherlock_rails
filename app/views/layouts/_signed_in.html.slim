@@ -1,6 +1,15 @@
 li
   = image_tag current_user.avatar, alt: "User's avatar", class: 'avatar'
 li
-  = link_to t('main.auth_toolbar.greetings') + current_user.first_name, user_path(current_user)
+  = t('main.auth_toolbar.greetings') + current_user.first_name
 li
-  = link_to t('main.auth_toolbar.sign_out'), destroy_user_session_path, method: :delete
+  = link_to t('main.auth_toolbar.my_search_history'), user_path(current_user)
+li
+  = link_to t('main.auth_toolbar.my_movies'), my_movies_user_path(current_user)
+li
+  = link_to t('main.auth_toolbar.edit_profile'), edit_user_registration_path(current_user)
+li
+  - if current_user.admin?
+    = link_to t('main.auth_toolbar.dashboard'), dashboard_index_path, class: 'orange'
+li
+  = link_to t('main.auth_toolbar.sign_out'), destroy_user_session_path, method: :delete, class: 'red'

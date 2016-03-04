@@ -6,6 +6,32 @@
   left: 50%;
   text-align: center;
   @include transform(translate(-50%, -50%));
+
+  &.content {
+    @include media(mobile) {
+      position: initial;
+      top: 0;
+      left: 0;
+      @include transform(none);
+    }
+  }
+}
+
+.background_image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: '';
+  display: inline-block;
+  height: 1.5em;
+  line-height: 0;
+  margin: -0.55em 0.25em -0.45em 0;
+  position: relative;
+  width: 1.5em;
+}
+
+.row {
+  margin-bottom: 4em;
 }
 
 .container {
@@ -19,22 +45,17 @@
   @include animation(Container 5s cubic-bezier(0.45, 0.43, 0.52, 1.03));
 }
 
-@include keyframes(Container) {
-  0%, 100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-  10%, 80% {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
 .flash,
 .errors {
   @extend .container;
-  padding: 1em 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.8em;
   color: $white;
+  @include media(mobile) {
+    padding: 1.2em;
+  }
 
   &.error,
   &.alert {
@@ -70,19 +91,14 @@
   }
 }
 
+.field_with_errors input {
+  border-color: $red;
+}
+
 .red {
   color: $red;
 }
 
-.background_image {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  content: '';
-  display: inline-block;
-  height: 1.5em;
-  line-height: 0;
-  margin: -0.55em 0.25em -0.45em 0;
-  position: relative;
-  width: 1.5em;
+.orange {
+  color: $orange;
 }

@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  #persist user in session on validation error with omniauth
+  # persist user in session on validation error with omniauth
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|
@@ -39,14 +39,17 @@ class User < ActiveRecord::Base
     end
   end
 
+  # validation for password on omniauth
   def password_required?
     super && self.provider.blank?
   end
 
+  # validation for email on omniauth
   def email_required?
     super && self.provider.blank?
   end
 
+  # password for update if blank on omniauth
   def update_with_password(params, *options)
     if encrypted_password.blank?
       update_attributes(params, *options)
@@ -62,7 +65,7 @@ class User < ActiveRecord::Base
   def set_default_role
     self.role ||= :user
   end
-  
+
   def downcase_email
     if email.present?
       self.email = email.downcase

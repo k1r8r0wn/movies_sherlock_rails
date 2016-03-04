@@ -310,8 +310,9 @@ form {
   input[type='checkbox'] {
     display: inline-block;
     width: initial;
-    margin-right: 12px;
+    min-width: 0;
     height: initial;
+    margin-right: 12px;
   }
 
   label{

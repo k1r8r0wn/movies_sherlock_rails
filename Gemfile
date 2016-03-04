@@ -22,6 +22,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'slim-rails', '~> 3.0', '>= 3.0.1'
 
 gem 'sass-rails', '~> 5.0'
+gem 'foundation-rails', '~> 6.2'
 gem 'bourbon', '~> 4.2', '>= 4.2.6'
 
 gem 'json', '~> 1.8', '>= 1.8.3'

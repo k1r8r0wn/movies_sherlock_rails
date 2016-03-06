@@ -4,7 +4,11 @@ en:
       sign_in: 'Sign In'
       sign_up: 'Sign Up'
       sign_out: 'Sign Out'
-      greetings: 'Hello, '
+      greetings:
+        morning: 'Good morning, '
+        afternoon: 'Good afternoon, '
+        evening: 'Good evening, '
+        night: 'Good night, '
       my_search_history: 'My search history'
       my_movies: 'My movies'
       edit_profile: 'Edit profile'

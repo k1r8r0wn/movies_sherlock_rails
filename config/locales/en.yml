@@ -14,6 +14,5 @@ en:
       movie_title: 'Movie title'
     button:
       search: 'Search'
-  menu:
     make_with_love:
       Make with <i class='fi-heart red'></i> in Siberia

@@ -1,17 +1,16 @@
-.centered.content
-  .row
-    .small-12.columns
-      h1 Forgot your password?
-      h2 Send me reset password instructions
+.row.text-center.centered.content
+  .small-12.columns
+    h1 Forgot your password?
+    h2 Send me reset password instructions
 
-      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-        = devise_error_messages!
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
 
-        .field
-          = f.text_field :email, placeholder: 'Email', autofocus: true
+      .field
+        = f.text_field :email, placeholder: 'Email', autofocus: true
 
-        .actions
-          = f.submit 'Send'
+      .actions
+        = f.submit 'Send'
 
-      .links
-        = render "devise/shared/links"
+    .links
+      = render "devise/shared/links"

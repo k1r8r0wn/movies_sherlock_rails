@@ -1,14 +1,27 @@
-.search_history.text-center
+.centered.content.search_history.text-center
   .row
     .small-12.columns.my_movies
-      h1 My movies
-      p Click or tap on the movie title to see it's info
 
-  .row
-    .small-12.columns.block
-      - @user_movies.each do |movie|
-        h2
-          = link_to movie.title, movie_path(movie)
-  .row
-    .small-12.columns.links
-      = link_to 'Go back', :back
+  - if @count_user_movies == 0
+    h1 There is no movies yet
+
+    .row
+      .small-12.columns.links
+        = link_to 'Find something', root_path
+        = link_to 'Go back', :back
+
+  - else
+    .row
+      .small-12.columns.block
+        h1 My movies
+        p Click or tap on the movie title to see it's info
+
+    .row
+      .small-12.columns.block
+        - @user_movies.each do |movie|
+          h2
+            = link_to movie.title, movie_path(movie)
+    .row
+      .small-12.columns.links
+        = link_to 'Go home & find more', root_path
+        = link_to 'Go back', :back

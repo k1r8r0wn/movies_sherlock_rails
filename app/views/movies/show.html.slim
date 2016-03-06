@@ -67,6 +67,7 @@
             'This movie in IMDb
 
     .links
+      = link_to 'Try another search', root_path
       - if user_signed_in?
         = link_to 'Go back', :back
-      = link_to 'Try another search', root_path
+

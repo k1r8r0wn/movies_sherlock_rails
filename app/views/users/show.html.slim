@@ -1,7 +1,7 @@
 .centered.content
   .row
     .small-12.columns.search_history
-      - if @user_movies == 0
+      - if @count_user_movies == 0
         .row
           .small-12.columns.block
             h1 My search history is empty
@@ -15,11 +15,11 @@
         .row
           .small-12.medium-6.columns.block
             h2
-              = @user_movies
+              = @count_user_movies
             span Movie(-s) in my library
           .small-12.medium-6.columns.block
             h2
-              = @movies_search
+              = @count_movies_search
               '  time(-s)
             span I search films
         .links

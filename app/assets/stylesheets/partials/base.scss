@@ -12,22 +12,35 @@ body {
 
 /* Off-canvas */
 
+.off-canvas-wrapper,
+.off-canvas-wrapper-inner {
+  min-height: 100%;
+}
+
+.off-canvas-wrapper {
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 .off-canvas {
   height: 100%;
+  z-index: 100;
+}
 
-  &.is-open {
-    box-shadow: 0 0 10px rgba($white, 0.2);
-  }
+.off-canvas.is-open {
+  box-shadow: 0 0 10px rgba($white, 0.2);
 }
 
 .off-canvas-content {
-  height: 100vh;
   background: none;
   box-shadow: none;
-  @include media(mobile) {
-    margin-bottom: 3em;
-    //height: 0;
-  }
+}
+
+.js-off-canvas-exit {
+  background: rgba(146, 159, 183, 0.8);
+  box-shadow: 0 0 10px rgba(10, 10, 10, 0.5);
+  z-index: 2;
 }
 
 /* Typography */
@@ -85,7 +98,7 @@ li {
 
 .links {
   margin-top: 1.4em;
-  @include media(mobile_low) {
+  @include media(mobile) {
     margin-top: 20px;
   }
 
@@ -127,45 +140,10 @@ li {
 }
 
 .make_with_love {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   text-align: center;
-  margin-bottom: 1em;
+  margin-top: 3em;
 
   i {
     margin: 0 3px;
   }
-}
-
-/* Dashboard, Search history, My movies */
-
-.block {
-  @include media(mobile) {
-    margin-bottom: 2em;
-  }
-
-  h2 {
-    display: block;
-    color: $orange;
-  }
-
-  span {
-    color: $white;
-  }
-}
-
-.movies_rating {
-  padding: 0 25px 25px;;
-
-  li {
-    padding: 2px 0;
-    display: block;
-    color: $orange;
-  }
-}
-
-.movie_poster {
-  box-shadow: 6px 4px 21px $black;
 }

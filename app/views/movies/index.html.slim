@@ -1,12 +1,14 @@
-.centered.content
-  .row
-    .small-12.columns
-      h1 Movies Sherlock
-      h2
-        = t('main.h2')
+.row.text-center.centered.content
+  .small-12.columns
+    h1 Movies Sherlock
+    h2
+      = t('main.h2')
 
-      = form_tag movies_path do
-        .field
-          = text_field_tag :movie_title, nil, placeholder: t('main.placeholder.movie_title'), autofocus: true
-        .actions
-          = submit_tag t('main.button.search'), class: 'button'
+    = form_tag movies_path do
+      .field
+        = text_field_tag :movie_title, nil, placeholder: t('main.placeholder.movie_title'), autofocus: true
+      .actions
+        = submit_tag t('main.button.search'), class: 'button'
+      .make_with_love
+        a href='http://kirillbobrov.com' target='_blank'
+          = raw t('main.make_with_love')

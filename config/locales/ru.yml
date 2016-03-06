@@ -14,6 +14,5 @@ ru:
       movie_title: 'Название фильма'
     button:
       search: 'Поиск'
-  menu:
     make_with_love:
       Сделано с <i class='fi-heart red'></i> в Сибири

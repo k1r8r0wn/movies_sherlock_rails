@@ -13,6 +13,7 @@ gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
 gem 'omniauth-google-oauth2', '~> 0.3.1'
 gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
 gem 'pundit', '~> 1.1'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 gem 'turbolinks', '~> 2.5', '>= 2.5.3'
 gem 'jquery-rails', '~> 4.1'
@@ -50,3 +51,5 @@ group :test do
   gem 'capybara-email', '~> 2.5'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
 end
+
+gem 'rails_12factor', '~> 0.0.3', group: :production

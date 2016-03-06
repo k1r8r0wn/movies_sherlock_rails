@@ -1,66 +1,72 @@
-.wrapper
-  .centered
-    .table-wrapper
-      h2 Searching results for "#{@movie.title.capitalize}"
-      .table-inner
-        table
-          thead
-            tr
-              th Category
-              th Info
-          tbody
-            tr
-              td Year
-              td = @movie.year
-            tr
-              td Rated
-              td = @movie.rated
-            tr
-              td Released
-              td = @movie.released
-            tr
-              td Runtime
-              td = @movie.runtime
-            tr
-              td Director
-              td = @movie.director
-            tr
-              td Writer
-              td = @movie.writer
-            tr
-              td Actors
-              td = @movie.actors
-            tr
-              td Plot
-              td = @movie.plot
-            tr
-              td Language
-              td = @movie.language
-            tr
-              td Country
-              td = @movie.country
-            tr
-              td Awards
-              td = @movie.awards
-            tr
-              td Poster
-              td = image_tag @movie.poster, alt: 'Movie poster'
-            tr
-              td Metascore
-              td = @movie.metascore
-            tr
-              td IMDb rating
-              td = @movie.imdb_rating
-            tr
-              td IMDb votes
-              td = @movie.imdb_votes
-            tr
-              td IMDb ID
-              td = @movie.imdb_id
-            tr
-              td Film type
-              td = @movie.film_type
-      .links
-        - if user_signed_in?
-          = link_to 'Go to my search history', user_path(current_user)
-        = link_to 'Try another search', root_path
+.row.text-center
+  .small-12.columns
+    .row
+      .small-12.columns
+        .title Searching results for "#{@movie.title.capitalize}"
+    .row
+      .small-12.columns
+      - if @movie.poster.present?
+        .small-12.columns
+          .block
+            = image_tag @movie.poster, alt: 'Movie poster', class: 'movie_poster'
+    .row.block
+      .small-12.medium-4.columns.block
+        h2 = @movie.year
+        p Year
+      .small-12.medium-4.columns.block
+        h2 = @movie.released
+        p Released
+      .small-12.medium-4.columns.block
+        h2 = @movie.film_type
+        p Film type
+    .row
+      .small-12.medium-4.columns.block
+        h2 = @movie.rated
+        p Rated
+      .small-12.medium-4.columns.block
+        h2 = @movie.runtime
+        p Runtime
+      .small-12.medium-4.columns.block
+        h2 = @movie.director
+        p Director
+    .row
+      .small-12.medium-4.columns.block
+        p.orange = @movie.writer
+        p Writer
+      .small-12.medium-4.columns.block
+        p.orange = @movie.actors
+        p Actors
+      .small-12.medium-4.columns.block
+        p.orange = @movie.awards
+        p Awards
+    .row
+      .small-12.columns.block
+        p.orange = @movie.plot
+        p Plot
+    .row
+      .small-12.medium-4.columns.block
+        h2 = @movie.language
+        p Language
+      .small-12.medium-4.columns.block
+        h2 = @movie.country
+        p Country
+      .small-12.medium-4.columns.block
+        h2 = @movie.metascore
+        p Metascore
+    .row
+      .small-12.medium-6.columns.block
+        h2 = @movie.imdb_rating
+        p IMDb rating
+      .small-12.medium-6.columns.block
+        h2 = @movie.imdb_votes
+        p IMDb votes
+    .row
+      .small-12.columns.block
+        h2
+          a href='http://www.imdb.com/title/#{@movie.imdb_id}/' target='_blank'
+            'This movie in IMDb
+
+    .links
+      - if user_signed_in?
+        = link_to 'Go back', :back
+      = link_to 'Try another search', root_path

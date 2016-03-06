@@ -1,0 +1,104 @@
+/* Helpers */
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  @include transform(translate(-50%, -50%));
+
+  &.content {
+    @include media(mobile) {
+      position: initial;
+      top: 0;
+      left: 0;
+      @include transform(none);
+    }
+  }
+}
+
+.background_image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: '';
+  display: inline-block;
+  height: 1.5em;
+  line-height: 0;
+  margin: -0.55em 0.25em -0.45em 0;
+  position: relative;
+  width: 1.5em;
+}
+
+.row {
+  margin-bottom: 4em;
+}
+
+.container {
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+  padding: 1em 0;
+  text-align: center;
+  z-index: 2;
+  @include animation(Container 5s cubic-bezier(0.45, 0.43, 0.52, 1.03));
+}
+
+.flash,
+.errors {
+  @extend .container;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.8em;
+  color: $white;
+  @include media(mobile) {
+    padding: 1.2em;
+  }
+
+  &.error,
+  &.alert {
+    background: $red;
+  }
+
+  &.success {
+    background: $green;
+  }
+
+  &.notice {
+    background: $purple;
+  }
+}
+
+.errors {
+  @extend .container;
+  height: 100%;
+  padding: 0;
+  border-radius: 12px;
+  background: $red;
+
+  ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 10px;
+      color: $white;
+    }
+  }
+}
+
+.field_with_errors input {
+  border-color: $red;
+}
+
+.red {
+  color: $red;
+}
+
+.orange {
+  color: $orange;
+}

@@ -1,0 +1,13 @@
+// Breakpoint mixin
+
+@mixin media($class) {
+  @if $class == tablet {
+    @media (min-width: 860px) { @content; }
+  }
+  @if $class == mobile {
+    @media (max-width: 768px) { @content; }
+  }
+  @if $class == mobile_low {
+    @media (max-width: 650px) { @content; }
+  }
+}

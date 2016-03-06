@@ -1,16 +1,16 @@
-.wrapper
-  .centered
-    h2 Resend unlock instructions
+.centered.content
+  .row
+    .small-12.columns
+      h2 Resend unlock instructions
 
-    = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
-      = devise_error_messages!
+      = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+        = devise_error_messages!
 
-      .field
-        = f.text_field :email, placeholder: 'Email', autofocus: true
+        .field
+          = f.text_field :email, placeholder: 'Email', autofocus: true
 
-      .actions
-        = f.submit 'Send'
+        .actions
+          = f.submit 'Send'
 
-    .links
-      = render 'devise/shared/links'
-      = link_to 'Back to home page', root_path
+      .links
+        = render 'devise/shared/links'

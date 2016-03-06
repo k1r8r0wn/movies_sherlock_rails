@@ -1,11 +1,14 @@
-.wrapper
-  .centered.search_history
-    .title My movies
-    p Click on the movie title to see it's info
+.search_history.text-center
+  .row
+    .small-12.columns.my_movies
+      h1 My movies
+      p Click or tap on the movie title to see it's info
 
-    ul
+  .row
+    .small-12.columns.block
       - @user_movies.each do |movie|
-        li
+        h2
           = link_to movie.title, movie_path(movie)
-    .links
+  .row
+    .small-12.columns.links
       = link_to 'Go back', :back

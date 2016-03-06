@@ -1,30 +1,29 @@
-.wrapper
-  .centered
-    .site_statistics
-      .title Site statistics
-      .block
-        h2
-          = @all_users
-        span Registered user(-s)
-      - if @all_movies == 0
-        .block
-          h2 &#9785;
-          span Movies database is empty
-      - else
-        .block
-          h2
-            = @all_movies
-          span Movie(-s) in database
-        .block
-          h2
-            = @unique_movies
-          span Unique movie(-s)
-        .block
-          ul.movies_rating
-            - @popular_movies.each.with_index(1) do |movie, index|
-              li
-                '#{index}. #{movie[0]} - #{movie[1]}
-          span Top-5 popular movie searches
-        .links
-          = link_to 'Go back', :back
-          = link_to 'Go to home page', root_path
+.centered.content
+  .row
+    .small-12.columns.dashboard
+      .title Dashboard
+
+  .row
+    .small-12.medium-4.columns.block
+      h2 = @all_users
+      p Registered user(-s)
+    - if @all_movies == 0
+      .small-12.medium-12.columns.block
+        h2 &#9785;
+        p Movies database is empty
+    - else
+      .small-12.medium-4.columns.block
+        h2 = @all_movies
+        p Movie(-s) in database
+      .small-12.medium-4.columns.block
+        h2 = @unique_movies
+        p Unique movie(-s)
+    .row
+      .small-12.medium-12.columns.block
+        ul.movies_rating
+          - @popular_movies.each.with_index(1) do |movie, index|
+            li
+              '#{index}. #{movie[0]} - #{movie[1]} time(-s)
+        p Top-5 popular movie searches
+    .links
+      = link_to 'Go back', :back

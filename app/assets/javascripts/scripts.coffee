@@ -1,6 +1,10 @@
-# Input for avatar functionality
-
 $(document).on 'ready page:load', ->
+  # 1. Enable foundation js
+
+  $(document).foundation()
+
+  # 2. Input for avatar functionality
+
   # For each .file element
   $('.file').each ->
     # Save some elements as variables

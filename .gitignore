@@ -15,7 +15,7 @@
 # Ignore some config files
 /config/database.yml
 /config/secrets.yml
-/config/api_keys.yml
+/config/application.yml
 
 # Other
 .DS_Store

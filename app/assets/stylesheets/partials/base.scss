@@ -4,10 +4,6 @@ body {
   min-width: 300px;
   color: $white;
   background: rgba(11, 38, 83, .83);
-  //@include background(
-  //  linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%),
-  //  linear-gradient(-45deg, $red 0%, $dark-blue 100%), no-repeat, center center
-  //);
   background-size: cover;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

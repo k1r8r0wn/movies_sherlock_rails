@@ -63,10 +63,8 @@ form {
   }
 
   .file {
-    @extend input;
-    line-height: 1;
+    margin-top: .7em;
     position: relative;
-    text-align: center;
     transition: all 0.5s ease-in-out;
     font-size: 0.9em;
   }

@@ -15,8 +15,10 @@
         = f.email_field :email, placeholder: 'Email'
 
       .field
+        = image_tag current_user.avatar, alt: "User's avatar", class: 'avatar'
+
         label.file
-          span.file-label Change your avatar&hellip;
+          span.file-label Change your current avatar&hellip;
           = f.file_field :avatar
           span.file-value aria-hidden="true"
 

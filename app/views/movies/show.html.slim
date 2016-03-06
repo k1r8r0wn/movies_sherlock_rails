@@ -54,15 +54,17 @@
         h2 = @movie.metascore
         p Metascore
     .row
-      .small-12.medium-4.columns.block
+      .small-12.medium-6.columns.block
         h2 = @movie.imdb_rating
         p IMDb rating
-      .small-12.medium-4.columns.block
+      .small-12.medium-6.columns.block
         h2 = @movie.imdb_votes
         p IMDb votes
-      .small-12.medium-4.columns.block
-        h2 = @movie.imdb_id
-        p IMDb ID
+    .row
+      .small-12.columns.block
+        h2
+          a href='http://www.imdb.com/title/#{@movie.imdb_id}/' target='_blank'
+            'This movie in IMDb
 
     .links
       - if user_signed_in?

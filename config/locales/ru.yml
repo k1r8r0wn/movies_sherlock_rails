@@ -4,11 +4,7 @@ ru:
       sign_in: 'Логин'
       sign_up: 'Регистрация'
       sign_out: 'Выйти'
-      greetings:
-        morning: 'Доброе утро, '
-        afternoon: 'Добрый день, '
-        evening: 'Добрый вечер, '
-        night: 'Доброй ночи, '
+      greetings: 'Привет, '
       my_search_history: 'Моя история поиска'
       my_movies: 'Мои фильмы'
       edit_profile: 'Редактировать мой профайл'

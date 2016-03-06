@@ -1,8 +1,7 @@
 li
   = image_tag current_user.avatar, alt: "User's avatar", class: 'avatar'
 li
-  = greetings
-  = current_user.first_name
+  = t('main.auth_toolbar.greetings') + current_user.first_name
 li
   = link_to t('main.auth_toolbar.my_search_history'), user_path(current_user)
 li

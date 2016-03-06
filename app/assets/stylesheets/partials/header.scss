@@ -1,9 +1,7 @@
 /* Header */
 
 .title-bar {
-  @include media(mobile) {
-    margin-bottom: 3em;
-  }
+  margin-bottom: 1em;
 }
 
 /* Logo */

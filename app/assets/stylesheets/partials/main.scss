@@ -1,0 +1,58 @@
+/* Main */
+
+.main {
+  margin-bottom: 3em;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  @include transform(translate(-50%, -50%));
+
+  &.content {
+    @include media(mobile-landscape) {
+      position: initial;
+      @include transform(none);
+    }
+  }
+}
+
+.row {
+  margin-bottom: 4em;
+  @include media(mobile) {
+    margin-bottom: 1em;
+  }
+}
+
+/* Dashboard, Search history, My movies */
+
+.block {
+  @include media(mobile) {
+    margin-bottom: 2em;
+  }
+
+  h2 {
+    display: block;
+    color: $orange;
+  }
+
+  span {
+    color: $white;
+  }
+}
+
+.movies_rating {
+  padding: 0 25px 25px;;
+
+  li {
+    padding: 2px 0;
+    display: block;
+    color: $orange;
+  }
+}
+
+.movie_poster {
+  box-shadow: 6px 4px 21px $black;
+}

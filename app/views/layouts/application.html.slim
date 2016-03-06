@@ -23,17 +23,14 @@ html lang="en,ru"
               = render 'layouts/signed_in'
             - else
               = render 'layouts/signed_out'
-          .make_with_love
-            a href='http://kirillbobrov.com' target='_blank'
-              = raw t('menu..make_with_love')
 
         /! original content goes in this container
         .off-canvas-content [data-off-canvas-content]
           .title-bar
-              = render 'layouts/menu_header'
-          .row
-            .small-12.columns
-              - flash.each do |type, message|
-                .div[class="flash #{type}"]
-                  = message
-              == yield
+            = render 'layouts/menu_header'
+
+          - flash.each do |type, message|
+            .div[class="flash #{type}"]
+              = message
+          .main
+            == yield

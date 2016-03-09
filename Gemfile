@@ -35,6 +35,9 @@ gem 'rest-client', '~> 1.8'
 
 gem 'carrierwave', '~> 0.10.0'
 
+gem 'resque', '~> 1.25', '>= 1.25.2'
+gem 'resque-scheduler', '~> 4.1'
+
 group :development, :test do
   gem 'byebug', '~> 8.2', '>= 8.2.2'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'

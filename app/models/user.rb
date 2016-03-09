@@ -10,46 +10,28 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:twitter, :google_oauth2, :github]
+         :omniauthable
 
   mount_uploader :avatar, AvatarUploader
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email      = auth.info.email
-      user.first_name = auth.info.first_name || auth.info.nickname
-      user.last_name  = auth.info.last_name
-      user.provider   = auth.provider
-      user.uid        = auth.uid
-      user.save
-    end
+  def apply_omniauth(omniauth)
+    self.first_name = omniauth['info']['first_name'] || omniauth['info']['nickname'] if first_name.blank?
+    self.last_name = omniauth['info']['last_name'] if last_name.blank?
+    self.email = omniauth['info']['email'] if email.blank?
+
+    providers.build(:name => omniauth['provider'],
+                    :uid => omniauth['uid']
+    )
   end
 
-  # persist user in session on validation error with omniauth
-  def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"], without_protection: true) do |user|
-        user.attributes = params
-        user.valid?
-        session["count_errors"] = session["count_errors"] + 1
-        session["devise.user_attributes"] = nil if session["count_errors"] == 2
-      end
-    else
-      super
-    end
-  end
-
-  # validation for password on omniauth
   def password_required?
-    super && self.provider.blank?
+    (providers.empty? || !password.blank?) && super
   end
 
-  # validation for email on omniauth
   def email_required?
-    super && self.provider.blank?
+    email && providers.empty?
   end
 
-  # password for update if blank on omniauth
   def update_with_password(params, *options)
     if encrypted_password.blank?
       update_attributes(params, *options)

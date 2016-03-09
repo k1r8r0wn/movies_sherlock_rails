@@ -6,9 +6,10 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.follow_up_email.subject
   #
   def follow_up_email(email)
-    mail(
-        to: email,
-        subject: 'We hope you are enjoying our app!'
+    mail(to: email,
+         subject: 'We hope you are enjoying our app!',
+         template_path: 'user_mailer',
+         template_name: 'follow_up_email'
     )
   end
 end

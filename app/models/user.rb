@@ -56,6 +56,6 @@ class User < ActiveRecord::Base
   end
 
   def send_greetings_email
-    FollowUpEmailJob.new(@user.email).enqueue(wait: 10.seconds)
+    UserMailer.follow_up_email(email).deliver_later!(wait: 10.seconds)
   end
 end

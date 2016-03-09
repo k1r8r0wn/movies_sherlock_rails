@@ -1,18 +1,31 @@
 class CallbacksController < Devise::OmniauthCallbacksController
   def all
-    user = User.from_omniauth(request.env["omniauth.auth"])
+    omniauth = request.env["omniauth.auth"]
+    provider = Provider.where(name: omniauth['provider'], uid: omniauth['uid']).take
 
-    if user.persisted?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => user.provider.titleize.split(" ").first
-      sign_in_and_redirect user, :event => :authentication
+    if provider
+      flash[:notice] = "Signed in successfully with #{provider.name.capitalize}"
+      sign_in_and_redirect User.find(provider.user_id)
+    elsif current_user
+      current_user.providers.create(name: omniauth['provider'], uid: omniauth['uid'])
+      flash[:notice] = 'Authentication successful.'
+      sign_in_and_redirect current_user
     else
-      session["count_errors"] = 0 if session["devise.user_attributes"] == nil
-      session["devise.user_attributes"] = user.attributes
-      redirect_to new_user_registration_url
+      user = current_user || (omniauth['info']['email'].present? && User.find_by(email: omniauth['info']['email']))
+      user = User.new unless user
+      user.apply_omniauth(omniauth)
+      if user.save
+        flash[:notice] = "Signed in successfully!"
+        sign_in_and_redirect(:user, user)
+      else
+        session['devise.user_attributes'] = omniauth.except('extra')
+        redirect_to new_user_registration_url
+      end
     end
   end
 
   alias_method :twitter, :all
   alias_method :google_oauth2, :all
   alias_method :github, :all
+  alias_method :linkedin, :all
 end

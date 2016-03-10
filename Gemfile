@@ -36,7 +36,7 @@ gem 'rest-client', '~> 1.8'
 gem 'carrierwave', '~> 0.10.0'
 
 gem 'redis', '~> 3.2', '>= 3.2.2'
-gem 'resque', '~> 1.25', '>= 1.25.2'
+gem 'resque', '~> 1.25', '>= 1.25.2', :require => "resque/server"
 gem 'resque-scheduler', '~> 4.1'
 
 group :development, :test do

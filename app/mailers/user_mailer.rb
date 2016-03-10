@@ -1,15 +1,17 @@
 class UserMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.follow_up_email.subject
-  #
   def follow_up_email(email)
     mail(to: email,
          subject: 'We hope you are enjoying our app!',
          template_path: 'user_mailer',
          template_name: 'follow_up_email'
+    )
+  end
+
+  def site_statistics_email
+    mail(to: ENV['ADMIN_EMAIL'],
+         subject: 'Week site statistics.',
+         template_path: 'user_mailer',
+         template_name: 'site_statistics_email'
     )
   end
 end

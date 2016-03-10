@@ -331,7 +331,6 @@ DEPENDENCIES
   quiet_assets (~> 1.1)
   rails (= 4.2.5)
   rails_12factor (~> 0.0.3)
-  redis (~> 3.2, >= 3.2.2)
   resque (~> 1.25, >= 1.25.2)
   resque-scheduler (~> 4.1)
   rest-client (~> 1.8)

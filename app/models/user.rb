@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :providers, dependent: :destroy
 
   after_initialize :set_default_role, :if => :new_record?
+  after_create :send_greetings_email
   before_save :downcase_email
 
   enum role: [:user, :vip, :admin]
@@ -52,5 +53,9 @@ class User < ActiveRecord::Base
     if email.present?
       self.email = email.downcase
     end
+  end
+
+  def send_greetings_email
+    UserMailer.follow_up_email(email).deliver_later!(wait: 10.seconds)
   end
 end

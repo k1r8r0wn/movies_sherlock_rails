@@ -1,0 +1,6 @@
+every_week:
+ cron: 0 14 * * 4
+ class: SiteStatisticsEmailJob
+ args:
+ queue: site_statistics_email_que
+ description: Weekly site statistics

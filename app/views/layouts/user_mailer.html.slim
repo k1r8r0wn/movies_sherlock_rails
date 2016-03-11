@@ -1,0 +1,15 @@
+doctype html
+html lang="en,ru"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+
+    style
+      '.mailer div { margin-bottom: 1.5em; }
+      '.mailer p, .mailer h2 { display: inline; }
+      '.mailer p { margin-right: .5em; }
+      '.mailer h2 { vertical-align: middle; }
+      '.mailer ul { margin-bottom: 1.5em; padding: 0; font-weight: bold; }
+      '.mailer li { list-style: none; margin-bottom: 1em; }
+  body
+    == yield

@@ -55,6 +55,12 @@ h1,
   }
 }
 
+.title.movie {
+  @include media(mobile) {
+    font-size: 1.5em;
+  }
+}
+
 h2 {
   font-size: 2em;
   margin-bottom: 40px;

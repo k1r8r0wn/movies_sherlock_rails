@@ -38,16 +38,18 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'resque', '~> 1.25', '>= 1.25.2', :require => "resque/server"
 gem 'resque-scheduler', '~> 4.1'
 
+gem 'kaminari', '~> 0.16.3'
+
 group :development, :test do
   gem 'byebug', '~> 8.2', '>= 8.2.2'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
   gem 'factory_girl_rails', '~> 4.6'
+  gem 'quiet_assets', '~> 1.1'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring', '~> 1.6', '>= 1.6.4'
-  gem 'quiet_assets', '~> 1.1'
 end
 
 group :test do

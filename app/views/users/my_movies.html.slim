@@ -1,4 +1,4 @@
-.row.text-center.centered.content.search_history
+.row.text-center.search_history
   .small-12.columns.my_movies
 
     - if @count_user_movies == 0
@@ -19,10 +19,12 @@
         .small-12.columns.block.movies_container
           = render 'users/user_movies'
 
-      .row
-        .small-12.columns.block.load_more_container
-          = image_tag 'spinner.svg', style: 'display: none;', class: 'loading_icon'
-          = link_to 'Load More', my_movies_user_path, class: 'load_more'
+      - unless @user_movies.current_page == @user_movies.total_pages
+        .row
+          .small-12.columns.block
+            p.view_more
+              = link_to('View More', url_for(page: @user_movies.current_page + 1))
+
       .row
         .small-12.columns.links
           = link_to 'Go home & find more', root_path

@@ -11,14 +11,6 @@ class UsersController < ApplicationController
   def my_movies
     authorize :user, :my_movies?
     @count_user_movies = current_user.movies.count
-    if params[:id]
-      @user_movies = current_user.movies.where('id < ?', params[:id]).limit(3)
-    else
-      @user_movies = current_user.movies.limit(3)
-    end
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @user_movies = current_user.movies.order('created_at DESC').page(params[:page]).per_page(5)
   end
 end

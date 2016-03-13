@@ -11,6 +11,14 @@ class UsersController < ApplicationController
   def my_movies
     authorize :user, :my_movies?
     @count_user_movies = current_user.movies.count
-    @user_movies = current_user.movies
+    if params[:id]
+      @user_movies = current_user.movies.where('id < ?', params[:id]).limit(3)
+    else
+      @user_movies = current_user.movies.limit(3)
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end

@@ -16,10 +16,13 @@
           p Click or tap on the movie title to see it's info
 
       .row
-        .small-12.columns.block
-          - @user_movies.each do |movie|
-            h2
-              = link_to movie.title, movie_path(movie)
+        .small-12.columns.block.movies_container
+          = render 'users/user_movies'
+
+      .row
+        .small-12.columns.block.load_more_container
+          = image_tag 'spinner.svg', style: 'display: none;', class: 'loading_icon'
+          = link_to 'Load More', my_movies_user_path, class: 'load_more'
       .row
         .small-12.columns.links
           = link_to 'Go home & find more', root_path

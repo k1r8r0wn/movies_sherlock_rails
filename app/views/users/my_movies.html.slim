@@ -1,7 +1,7 @@
-.row.text-center.search_history
-  .small-12.columns.my_movies
+- if @count_user_movies == 0
+  .row.text-center.centered.content.search_history
+    .small-12.columns.my_movies
 
-    - if @count_user_movies == 0
       h1 There is no movies yet
 
       .row
@@ -9,7 +9,9 @@
           = link_to 'Find something', root_path
           = link_to 'Go back', :back
 
-    - else
+- else
+  .row.text-center.search_history
+    .small-12.columns.my_movies
       .row
         .small-12.columns.block
           h1 My movies

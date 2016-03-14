@@ -11,7 +11,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
       flash[:notice] = 'Authentication successful.'
       sign_in_and_redirect current_user
     else
-      user = current_user || (omniauth['info']['email'].present? && User.find_by(email: omniauth['info']['email']))
+      user = (omniauth['info']['email'].present? && User.find_by(email: omniauth['info']['email']))
       user = User.new unless user
       user.apply_omniauth(omniauth)
       if user.save
@@ -28,4 +28,5 @@ class CallbacksController < Devise::OmniauthCallbacksController
   alias_method :google_oauth2, :all
   alias_method :github, :all
   alias_method :linkedin, :all
+  alias_method :facebook, :all
 end

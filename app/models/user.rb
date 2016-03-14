@@ -2,6 +2,11 @@ class User < ActiveRecord::Base
   has_many :movies, dependent: :destroy
   has_many :providers, dependent: :destroy
 
+  after_initialize :set_default_role, :if => :new_record?
+  # TODO: Uncomment when set up redis & resque in heroku
+  # after_create :send_greetings_email
+  before_save :downcase_email
+
   enum role: [:user, :vip, :admin]
 
   devise :database_authenticatable, :registerable,
@@ -56,7 +61,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_greetings_email
-    UserMailer.follow_up_email(email).deliver_later!(wait: 10.seconds)
-  end
+  # TODO: Uncomment when set up redis & resque in heroku
+  # def send_greetings_email
+  #   UserMailer.follow_up_email(email).deliver_later!(wait: 10.seconds)
+  # end
 end

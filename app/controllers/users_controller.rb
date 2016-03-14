@@ -11,6 +11,6 @@ class UsersController < ApplicationController
   def my_movies
     authorize :user, :my_movies?
     @count_user_movies = current_user.movies.count
-    @user_movies = current_user.movies.order('created_at DESC').page(params[:page]).per_page(5)
+    @user_movies = current_user.movies.order('created_at DESC').page(params[:page]).per(5)
   end
 end

@@ -42,4 +42,4 @@ $ ->
   # without infinite scrolling taking affect.
   viewMore.find('a').click (e) ->
     nextPage()
-    e.preventDefaults()
+    e.preventDefault()

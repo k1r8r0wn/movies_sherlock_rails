@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  require 'resque'
-  require 'resque-scheduler'
-  require 'resque/scheduler/server'
+
 
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'callbacks' }
 

@@ -11,7 +11,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
       flash[:notice] = 'Authentication successful.'
       sign_in_and_redirect current_user
     else
-      user = current_user || (omniauth['info']['email'].present? && User.find_by(email: omniauth['info']['email']))
+      user = (omniauth['info']['email'].present? && User.find_by(email: omniauth['info']['email']))
       user = User.new unless user
       user.apply_omniauth(omniauth)
       if user.save

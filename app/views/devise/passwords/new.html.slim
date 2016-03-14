@@ -7,7 +7,7 @@
       = devise_error_messages!
 
       .field
-        = f.text_field :email, placeholder: 'Email', autofocus: true
+        = f.email_field :email, placeholder: 'Email', autofocus: true
 
       .actions
         = f.submit 'Send'

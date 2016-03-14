@@ -6,7 +6,7 @@
       = devise_error_messages!
 
       .field
-        = f.text_field :email, placeholder: 'Email', autofocus: true
+        = f.email_field :email, placeholder: 'Email', autofocus: true
 
       .field
         = f.password_field :password, placeholder: 'Password', autocomplete: 'off'

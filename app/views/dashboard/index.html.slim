@@ -25,5 +25,6 @@
               '#{index}. #{movie[0]} - #{movie[1]} time(-s)
         p Top-5 popular movie searches
   .links
+    = link_to 'Download in CSV', dashboard_index_path(format: 'csv')
     = link_to 'Go home', root_path
     = link_to 'Go back', :back

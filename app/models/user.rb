@@ -17,12 +17,8 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
 
-  after_initialize :set_default_role, :if => :new_record?
-  after_create :send_greetings_email
-  before_save :downcase_email
-
   def apply_omniauth(omniauth)
-    self.first_name = omniauth['info']['first_name'] || omniauth['info']['nickname'] if first_name.blank?
+    self.first_name = omniauth['info']['name'] || omniauth['info']['first_name'] || omniauth['info']['nickname'] if first_name.blank?
     self.last_name =  omniauth['info']['last_name'] if last_name.blank?
     self.email =      omniauth['info']['email'] if email.blank?
 

@@ -14,4 +14,10 @@ class DashboardFacade
   def popular_movies
     Movie.group(:title).count.sort_by { |_key, values| - values}.first(5)
   end
+
+  def csv_prepare
+    popular_movies.map do |movie, times|
+      "#{movie} - #{times} time(-s)"
+    end.join(', ')
+  end
 end

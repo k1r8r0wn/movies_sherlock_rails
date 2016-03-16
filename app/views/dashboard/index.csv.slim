@@ -1,0 +1,3 @@
+= CSV.generate_line ['All users', 'All movies', 'Unique movies', 'Popular movies'], col_sep: ';'
+= CSV.generate_line [@dashboard.count_all_users, @dashboard.count_all_movies, @dashboard.count_unique_movies, @dashboard.csv_prepare], col_sep: ';'
+

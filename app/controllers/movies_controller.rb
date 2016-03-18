@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :vote_for_movie]
-  after_action :verify_authorized, only: [:show, :vote_for_movie]
+  before_action :authenticate_user!, only: [:show, :vote_for, :vote_against]
+  after_action :verify_authorized, only: [:show, :vote_for, :vote_against]
 
   def index; end
 

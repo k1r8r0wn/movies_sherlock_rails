@@ -1,11 +1,11 @@
 class MoviesController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
-  after_action :verify_authorized, only: [:show]
+  before_action :authenticate_user!, only: [:show, :vote_for_movie]
+  after_action :verify_authorized, only: [:show, :vote_for_movie]
 
   def index; end
 
   def show
-    @movie = Movie.find(params[:id])
+    find_movie
     authorize @movie
     if @movie.user_id == current_user.id
       render :show
@@ -54,5 +54,31 @@ class MoviesController < ApplicationController
         render :show
       end
     end
+  end
+
+  def vote_for
+    current_user.vote_for(find_movie)
+    authorize @movie
+    if @movie.voted_by?(current_user)
+      redirect_to :back, success: 'You vote is accepted!'
+    else
+      redirect_to :back, error: 'Oops, something goes wrong!'
+    end
+  end
+
+  def vote_against
+    current_user.vote_against(find_movie)
+    authorize @movie
+    if @movie.voted_by?(current_user)
+      redirect_to :back, success: 'You vote is accepted!'
+    else
+      redirect_to :back, error: 'Oops, something goes wrong!'
+    end
+  end
+
+  private
+
+  def find_movie
+    @movie = Movie.find(params[:id])
   end
 end

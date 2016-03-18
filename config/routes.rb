@@ -7,7 +7,12 @@ Rails.application.routes.draw do
       get 'my_movies', as: :my_movies
     end
   end
-  resources :movies, only: [:index, :create, :show]
+  resources :movies, only: [:index, :create, :show] do
+    member do
+      post 'vote_for'
+      post 'vote_against'
+    end
+  end
   resources :dashboard, only: [:index]
 
   scope '(:locale)', :locale => /en|ru/ do

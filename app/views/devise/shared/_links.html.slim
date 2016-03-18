@@ -1,4 +1,4 @@
-- if controller_name == 'sessions' && devise_mapping.omniauthable?
+- if controller_name == 'sessions' || controller_name == 'registrations' && devise_mapping.omniauthable?
   .omniauth
     p You can also sign in with:
     - resource_class.omniauth_providers.each do |provider|

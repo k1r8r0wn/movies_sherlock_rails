@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :movies, dependent: :destroy
   has_many :providers, dependent: :destroy
 
+  acts_as_voter
+
   after_initialize :set_default_role, :if => :new_record?
   # TODO: Uncomment when set up redis & resque in heroku
   # after_create :send_greetings_email

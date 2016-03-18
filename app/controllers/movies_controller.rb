@@ -58,27 +58,26 @@ class MoviesController < ApplicationController
 
   def vote_for
     current_user.vote_for(find_movie)
-    authorize @movie
-    if @movie.voted_by?(current_user)
-      redirect_to :back, success: 'You vote is accepted!'
-    else
-      redirect_to :back, error: 'Oops, something goes wrong!'
-    end
+    voted?
   end
 
   def vote_against
     current_user.vote_against(find_movie)
-    authorize @movie
-    if @movie.voted_by?(current_user)
-      redirect_to :back, success: 'You vote is accepted!'
-    else
-      redirect_to :back, error: 'Oops, something goes wrong!'
-    end
+    voted?
   end
 
   private
 
   def find_movie
     @movie = Movie.find(params[:id])
+  end
+
+  def voted?
+    authorize @movie
+    if @movie.voted_by?(current_user)
+      redirect_to :back, success: 'You vote is accepted!'
+    else
+      redirect_to :back, error: 'Oops, something goes wrong!'
+    end
   end
 end

@@ -6,11 +6,10 @@ class UserPolicy
     @model = model
   end
 
-  def show?
+  def all
     true
   end
 
-  def my_movies?
-    true
-  end
+  alias_method :show?, :all
+  alias_method :my_movies?, :all
 end

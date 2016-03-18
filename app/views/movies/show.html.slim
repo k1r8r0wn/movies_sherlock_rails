@@ -60,14 +60,27 @@
       .small-12.medium-6.columns.block
         h2 = @movie.imdb_votes
         p IMDb votes
-    .row
-      .small-12.columns.block
-        h2
-          a href='http://www.imdb.com/title/#{@movie.imdb_id}/' target='_blank'
-            'This movie in IMDb
+    - if user_signed_in?
+      .row
+        .small-12.columns.block
+          - if @movie.voted_by?(current_user)
+            h2 Thanks for your vote!
+            p Total votes:
+            .thumbs_up
+              .div
+                = @movie.votes_for
+            .thumbs_down
+              .div
+                = @movie.votes_against
+          - else
+            h2 How is this movie for you?
+            p Please vote for or against
+            = link_to '', vote_for_movie_path(@movie), method: :post, class: 'thumbs_up'
+            = link_to '', vote_against_movie_path(@movie), method: :post, class: 'thumbs_down'
 
     .links
+      a href='http://www.imdb.com/title/#{@movie.imdb_id}/' target='_blank'
+        'This movie in IMDb
       = link_to 'Try another search', root_path
       - if user_signed_in?
         = link_to 'Go back', :back
-

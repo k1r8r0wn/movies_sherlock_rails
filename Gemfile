@@ -36,6 +36,8 @@ gem 'rest-client', '~> 1.8'
 
 gem 'carrierwave', '~> 0.10.0'
 
+gem 'thumbs_up', '~> 0.6.8'
+
 gem 'resque', '~> 1.25', '>= 1.25.2', :require => "resque/server"
 gem 'resque-scheduler', '~> 4.1'
 

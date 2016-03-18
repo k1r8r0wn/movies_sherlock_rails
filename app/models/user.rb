@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
 
   acts_as_voter
 
+  extend FriendlyId
+  friendly_id :first_name, use: :slugged
+
   after_initialize :set_default_role, :if => :new_record?
   # TODO: Uncomment when set up redis & resque in heroku
   # after_create :send_greetings_email

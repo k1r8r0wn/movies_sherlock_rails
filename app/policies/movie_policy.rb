@@ -6,7 +6,11 @@ class MoviePolicy
     @model = model
   end
 
-  def show?
+  def all
     true
   end
+
+  alias_method :show?, :all
+  alias_method :vote_for?, :all
+  alias_method :vote_against?, :all
 end

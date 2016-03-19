@@ -3,11 +3,11 @@ li
 li
   = t('main.auth_toolbar.greetings') + current_user.first_name
 li
-  = link_to t('main.auth_toolbar.my_search_history'), user_path(current_user)
+  = link_to t('main.auth_toolbar.my_search_history'), users_path(current_user)
 li
-  = link_to t('main.auth_toolbar.my_movies'), my_movies_user_path(current_user)
+  = link_to t('main.auth_toolbar.my_movies'), my_movies_path(current_user)
 li
-  = link_to t('main.auth_toolbar.edit_profile'), edit_user_registration_path(current_user)
+  = link_to t('main.auth_toolbar.edit_profile'), edit_user_registration_path
 li
   - if current_user.admin?
     = link_to t('main.auth_toolbar.dashboard'), dashboard_index_path, class: 'orange'

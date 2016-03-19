@@ -56,13 +56,23 @@ class MoviesController < ApplicationController
   end
 
   def vote_for
-    current_user.vote_for(find_movie)
+    current_user.vote_for(set_movie)
     voted?
   end
 
   def vote_against
-    current_user.vote_against(find_movie)
+    current_user.vote_against(set_movie)
     voted?
+  end
+
+  def unvote
+    current_user.unvote_for(set_movie)
+    authorize @movie
+    if true
+      redirect_to :back, success: 'You successfully delete your vote!'
+    else
+      redirect_to :back, error: 'Oops, something goes wrong!'
+    end
   end
 
   private

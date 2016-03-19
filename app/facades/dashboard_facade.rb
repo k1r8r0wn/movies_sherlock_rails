@@ -12,7 +12,7 @@ class DashboardFacade
   end
 
   def popular_movies
-    Movie.group(:title).count.sort_by { |_key, values| - values}.first(5)
+    Movie.group(:title).sum(:search_count).sort_by { |_key, values| - values}.first(5)
   end
 
   def csv_prepare

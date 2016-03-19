@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     authorize :user, :show?
     @count_user_movies = current_user.movies.count
-    @count_movies_search = Movie.user_search(current_user).sum(:search_count)
+    @count_movies_search = current_user.movies.sum(:search_count)
   end
 
   def my_movies

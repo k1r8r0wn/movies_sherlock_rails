@@ -67,11 +67,13 @@
             h2 Thanks for your vote!
             p Total votes:
             .thumbs_up
-              .div
+              div
                 = @movie.votes_for
             .thumbs_down
-              .div
+              div
                 = @movie.votes_against
+            .links
+              = link_to 'Want to revote?', unvote_movie_path(@movie), method: :delete, class: 'orange'
           - else
             h2 How is this movie for you?
             p Please vote for or against

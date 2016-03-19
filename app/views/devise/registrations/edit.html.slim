@@ -42,7 +42,8 @@
 
 .row.text-center
   .small-12.columns
-    h2 Unhappy? You can cancel your account
+    h2 Unhappy?
+    p You can cancel your account
     .links
       = button_to 'Here', registration_path(resource_name), data: { confirm: 'Attention! This is irreversible process. Are you sure you want to continue?' }, method: :delete, class: 'cancel_account'
     .links

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :movies, dependent: :destroy
+  has_and_belongs_to_many :movies
   has_many :providers, dependent: :destroy
 
   acts_as_voter

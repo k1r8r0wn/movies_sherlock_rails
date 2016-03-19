@@ -5,12 +5,12 @@ class MoviesController < ApplicationController
   def index; end
 
   def show
-    find_movie
+    set_movie
     authorize @movie
-    if @movie.user_id == current_user.id
+    if @movie.users.where(id: current_user.id).present?
       render :show
     else
-      redirect_to my_movies_user_path, notice: "You haven't got movie with this id."
+      redirect_to my_movies_path, notice: "You haven't got movie with this id."
     end
   end
 
@@ -31,15 +31,14 @@ class MoviesController < ApplicationController
         flash.now[:error] = "Sorry, but there is no results for \"#{@movie_title}\"."
         render :index
 
-      elsif current_user && Movie.where(title: parser_result['Title'], user_id: current_user.id).present?
-        @movie = Movie.find_by(title: parser_result['Title'], user_id: current_user.id)
-        @movie_id = @movie.id
+      elsif current_user && current_user.movies.where(title: parser_result['Title']).present?
+        @movie = Movie.friendly.find_by(title: parser_result['Title'], id: current_user.movies)
         @movie.increment!(:search_count)
         render :show
 
       elsif current_user
         @movie = Movie.new(parser.prepare_to_model)
-        @movie.user_id = current_user.id
+        @movie.users << current_user
 
         if @movie.save
           @movie.increment!(:search_count)
@@ -68,7 +67,7 @@ class MoviesController < ApplicationController
 
   private
 
-  def find_movie
+  def set_movie
     @movie = Movie.friendly.find(params[:id])
   end
 

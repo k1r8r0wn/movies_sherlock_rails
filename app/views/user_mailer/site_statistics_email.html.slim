@@ -18,10 +18,6 @@
       h2 = @count_all_movies
 
     .div
-      p Unique movie(-s):
-      h2 = @count_unique_movies
-
-    .div
       ul Top-5 popular movie searches:
       - @popular_movies.each.with_index(1) do |movie, index|
         li #{index}. #{movie[0]} - #{movie[1]} time(-s)

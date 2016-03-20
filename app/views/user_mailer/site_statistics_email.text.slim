@@ -8,8 +8,6 @@
 - else
   | <b>Movie(-s) in database:</b> #{@count_all_movies},
     <br>
-  | <b>Unique movie(-s):</b> #{@count_unique_movies},
-    <br>
   | <b>Top-5 popular movie searches:</b>
     <br>
   - @popular_movies.each.with_index(1) do |movie, index|

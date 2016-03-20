@@ -4,20 +4,17 @@
       h1 Dashboard
 
   .row
-    .medium-12.large-4.columns.block
+    .medium-12.large-6.columns.block
       h2 = @dashboard.count_all_users
       p Registered user(-s)
     - if @dashboard.count_all_movies == 0
-      .medium-12.large-4.columns.block
+      .medium-12.large-6.columns.block
         h2 &#9785;
         p Movies database is currently empty
     - else
-      .medium-12.large-4.columns.block
+      .medium-12.large-6.columns.block
         h2 = @dashboard.count_all_movies
         p Movie(-s) in database
-      .medium-12.large-4.columns.block
-        h2 = @dashboard.count_unique_movies
-        p Unique movie(-s)
       .medium-12.large-6.columns.block
         ul.movies_rating
           - @dashboard.popular_movies.each.with_index(1) do |movie, index|

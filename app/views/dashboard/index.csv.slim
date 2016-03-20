@@ -1,3 +1,2 @@
-= CSV.generate_line ['All users', 'All movies', 'Unique movies', 'Popular movies'], col_sep: ';'
-= CSV.generate_line [@dashboard.count_all_users, @dashboard.count_all_movies, @dashboard.count_unique_movies, @dashboard.csv_prepare], col_sep: ';'
-
+= CSV.generate_line ['All users', 'All movies', 'Popular movies', 'Top-5 movies with rating lower 5 votes', 'Top-5 movies with rating over 5 votes' ], col_sep: ';'
+= CSV.generate_line [@dashboard.count_all_users, @dashboard.count_all_movies, @dashboard.csv_popular_movies, @dashboard.csv_low_voted_movies, @dashboard.csv_top_voted_movies], col_sep: ';'

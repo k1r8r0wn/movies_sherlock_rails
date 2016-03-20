@@ -34,14 +34,16 @@ class MoviesController < ApplicationController
       elsif current_user && current_user.movies.where(title: parser_result['Title']).present?
         @movie = Movie.friendly.find_by(title: parser_result['Title'], id: current_user.movies)
         @movie.increment!(:search_count)
+        current_user.increment!(:total_search_count)
         render :show
 
       elsif current_user
-        @movie = Movie.new(parser.prepare_to_model)
+        @movie = Movie.find_or_create_by(parser.prepare_to_model) unless @movie.present?
         @movie.users << current_user
 
         if @movie.save
           @movie.increment!(:search_count)
+          current_user.increment!(:total_search_count)
           render :show
         else
           flash.now[:error] = 'Something goes wrong!'

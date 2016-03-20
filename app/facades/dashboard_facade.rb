@@ -7,10 +7,6 @@ class DashboardFacade
     Movie.count
   end
 
-  def count_unique_movies
-    Movie.uniq.count(:title)
-  end
-
   def popular_movies
     Movie.group(:title).sum(:search_count).sort_by { |_key, values| - values}.first(5)
   end

@@ -9,10 +9,9 @@ class UserMailer < ApplicationMailer
     )
   end
 
-  def site_statistics_email(count_all_users, count_all_movies, count_unique_movies, popular_movies)
+  def site_statistics_email(count_all_users, count_all_movies, popular_movies)
     @count_all_users = count_all_users
     @count_all_movies = count_all_movies
-    @count_unique_movies = count_unique_movies
     @popular_movies = popular_movies
     mail(to: ENV['ADMIN_EMAIL'],
          subject: 'Week site statistics.',

@@ -14,3 +14,16 @@
     |
       #{index}. #{movie[0]} - #{movie[1]} time(-s),
       <br>
+  | <b>Top-5 movies with rating lower 5 votes:</b>
+    <br>
+  - @low_voted_movies.each.with_index(1) do |movie, index|
+    |
+      #{index}. #{movie}
+      <br>
+  - unless @top_voted_movies.empty?
+    | <b>Top-5 movies with rating over 5 votes:</b>
+        <br>
+    - @top_voted_movies.each.with_index(1) do |movie, index|
+      |
+        #{index}. #{movie}
+        <br>

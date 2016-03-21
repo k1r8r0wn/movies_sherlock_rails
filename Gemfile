@@ -45,6 +45,9 @@ gem 'resque-scheduler', '~> 4.1'
 
 gem 'kaminari', '~> 0.16.3'
 
+gem 'activeadmin'
+gem 'country_select', '~> 2.5', '>= 2.5.2'
+
 group :development, :test do
   gem 'byebug', '~> 8.2', '>= 8.2.2'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'

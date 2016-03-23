@@ -4,13 +4,17 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'callbacks' }
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :search]
 
-  resources :movies, only: [:index, :create, :show] do
+  resources :movies, only: [:index, :create, :show, :search] do
     member do
       post 'vote_for'
       post 'vote_against'
       delete 'unvote'
+
+    end
+    collection do
+      get 'search'
     end
   end
 

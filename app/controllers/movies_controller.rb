@@ -77,6 +77,26 @@ class MoviesController < ApplicationController
     end
   end
 
+  def search
+    authorize :movie, :search?
+    if params[:search] == ''
+      redirect_to :back, notice: 'Oops, nothing to search. What would you like to find?'
+    else
+      @query = Sunspot.search(Movie) do
+        fulltext params[:search] do
+          fields(:title)
+        end
+      end
+      @movies = @query.results
+
+      if @movies.empty?
+        redirect_to :back, notice: 'There is no results. Please, try another search.'
+      else
+        render :search
+      end
+    end
+  end
+
   private
 
   def set_movie

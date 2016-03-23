@@ -1,0 +1,12 @@
+.row.text-center
+  .small-12.columns
+    .row
+      .small-12.columns
+        .title.movie Searching results
+    .row
+      - if @movies.present?
+        .small-12.columns.block
+          ul
+            - @movies.each do |movie|
+              li
+                = link_to movie.title, movie_path(movie)

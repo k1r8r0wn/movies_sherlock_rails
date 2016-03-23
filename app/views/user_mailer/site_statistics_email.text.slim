@@ -1,29 +1,29 @@
 |
   <b>Weekly site statistics.</b>
   <br>
-  <b>Registered user(-s):</b> #{@count_all_users},
+  <b>Registered user(-s):</b> #{@dashboard.count_all_users},
   <br>
-- if @count_all_movies == 0
+- if @dashboard.count_all_movies == 0
   | <b>Movies database is currently empty.</b>
 - else
-  | <b>Movie(-s) in database:</b> #{@count_all_movies},
+  | <b>Movie(-s) in database:</b> #{@dashboard.count_all_movies},
     <br>
   | <b>Top-5 popular movie searches:</b>
     <br>
-  - @popular_movies.each.with_index(1) do |movie, index|
+  - @dashboard.popular_movies.each.with_index(1) do |movie, index|
     |
       #{index}. #{movie[0]} - #{movie[1]} time(-s),
       <br>
   | <b>Top-5 movies with rating lower 5 votes:</b>
     <br>
-  - @low_voted_movies.each.with_index(1) do |movie, index|
+  - @dashboard.low_voted_movies.each.with_index(1) do |movie, index|
     |
       #{index}. #{movie}
       <br>
-  - unless @top_voted_movies.empty?
+  - unless @dashboard.top_voted_movies.empty?
     | <b>Top-5 movies with rating over 5 votes:</b>
         <br>
-    - @top_voted_movies.each.with_index(1) do |movie, index|
+    - @dashboard.top_voted_movies.each.with_index(1) do |movie, index|
       |
         #{index}. #{movie}
         <br>

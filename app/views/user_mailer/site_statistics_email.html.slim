@@ -4,31 +4,29 @@
 
   .div
     p Registered user(-s):
-    h2 = @count_all_users
+    h2 = @dashboard.count_all_users
 
-  - if @count_all_movies == 0
-
+  - if @dashboard.count_all_movies.zero?
     .div
       h2 Movies database is currently empty
 
   - else
-
     .div
       p Movie(-s) in database:
-      h2 = @count_all_movies
+      h2 = @dashboard.count_all_movies
 
     .div
       ul Top-5 popular movie searches:
-      - @popular_movies.each.with_index(1) do |movie, index|
+      - @dashboard.popular_movies.each.with_index(1) do |movie, index|
         li #{index}. #{movie[0]} - #{movie[1]} time(-s)
 
     .div
       ul Top-5 movies with rating lower 5 votes
-      - @low_voted_movies.each.with_index(1) do |movie, index|
+      - @dashboard.low_voted_movies.each.with_index(1) do |movie, index|
         li #{index}. #{movie}
 
-    - unless @top_voted_movies.empty?
+    - unless @dashboard.top_voted_movies.empty?
       .div
         ul Top-5 movies with rating over 5 votes
-        - @top_voted_movies.each.with_index(1) do |movie, index|
+        - @dashboard.top_voted_movies.each.with_index(1) do |movie, index|
           li #{index}. #{movie}

@@ -7,7 +7,7 @@
     .medium-12.large-6.columns.block
       h2 = @dashboard.count_all_users
       p Registered user(-s)
-    - if @dashboard.count_all_movies == 0
+    - if @dashboard.count_all_movies.zero?
       .medium-12.large-6.columns.block
         h2 &#9785;
         p Movies database is currently empty

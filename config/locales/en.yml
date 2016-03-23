@@ -12,7 +12,9 @@ en:
     h2: 'Helps you easily find any information about the movie you want'
     placeholder:
       movie_title: 'Movie title'
+      find_something: 'Find something'
     button:
       search: 'Search'
+      find: 'Find'
     make_with_love:
       Make with <i class='fi-heart red'></i> in Siberia

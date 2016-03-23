@@ -12,7 +12,9 @@ ru:
     h2: 'Поможет вам легко найти любую информацию о фильме'
     placeholder:
       movie_title: 'Название фильма'
+      find_something: 'Найти что-нибудь'
     button:
       search: 'Поиск'
+      find: 'Найти'
     make_with_love:
       Сделано с <i class='fi-heart red'></i> в Сибири

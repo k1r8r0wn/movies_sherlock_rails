@@ -14,4 +14,5 @@ class MoviePolicy
   alias_method :vote_for?, :all
   alias_method :vote_against?, :all
   alias_method :unvote?, :all
+  alias_method :search?, :all
 end

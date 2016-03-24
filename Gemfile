@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'rest-client', '~> 1.8'
 
 gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave-video', '~> 0.5.6'
 
 gem 'thumbs_up', '~> 0.6.8'
 

@@ -69,6 +69,7 @@ group :test do
   gem 'capybara', '~> 2.6', '>= 2.6.2'
   gem 'capybara-email', '~> 2.5'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
+  gem 'simplecov', '~> 0.11.2', require: false
 end
 
 gem 'rails_12factor', '~> 0.0.3', group: :production

@@ -25,7 +25,6 @@ class MoviesController < ApplicationController
     else
       parser = ParserService.new
       parser.find_movie(@movie_title)
-      parser_result = parser.result
 
       if parser.contain_errors?
         flash.now[:error] = "Sorry, but there is no results for \"#{@movie_title}\"."

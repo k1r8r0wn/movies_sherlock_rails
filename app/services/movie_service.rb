@@ -11,23 +11,25 @@ class MovieService
 
   def save
     if user && user.movies.where(title: title).present?
-      @movie = Movie.find_by(title: title, id: user.movies)
-      @movie.increment!(:search_count)
-      user.increment!(:total_search_count)
+      @movie = Movie.friendly.find_by(title: title, id: user.movies)
+      increment_count
     elsif user
-      @movie = Movie.find_or_create_by(parser.prepare_to_model) do |m|
-        m.users << user
-        m.increment!(:search_count)
-      end
-      user.increment!(:total_search_count)
+      @movie = Movie.find_or_create_by(parser.prepare_to_model)
+      @movie.users << user
+      increment_count
     else
       @movie = ShowFilm.new(parser.prepare_to_model)
     end
 
-    @execute  = {command: 'render', arg: 'show'}
+    @execute = {command: 'render', arg: 'show'}
   end
 
   def errors?
     errors.present?
+  end
+
+  def increment_count
+    @movie.increment!(:search_count)
+    user.increment!(:total_search_count)
   end
 end

@@ -11,7 +11,7 @@ class MovieService
 
   def save
     if user && user.movies.where(title: title).present?
-      @movie = Movie.friendly.find_by(title: title, id: user.movies)
+      @movie = user.movies.find_by(title: title)
       increment_count
     elsif user
       @movie = Movie.find_or_create_by(parser.prepare_to_model)

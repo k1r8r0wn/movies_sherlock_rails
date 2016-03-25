@@ -25,34 +25,20 @@ class MoviesController < ApplicationController
     else
       parser = ParserService.new
       parser.find_movie(@movie_title)
-      parser_result = parser.result
 
-      if parser_result['Title'].nil?
+      if parser.contain_errors?
         flash.now[:error] = "Sorry, but there is no results for \"#{@movie_title}\"."
         render :index
-
-      elsif current_user && current_user.movies.where(title: parser_result['Title']).present?
-        @movie = Movie.friendly.find_by(title: parser_result['Title'], id: current_user.movies)
-        @movie.increment!(:search_count)
-        current_user.increment!(:total_search_count)
-        render :show
-
-      elsif current_user
-        @movie = Movie.find_or_create_by(parser.prepare_to_model) unless @movie.present?
-        @movie.users << current_user
-
-        if @movie.save
-          @movie.increment!(:search_count)
-          current_user.increment!(:total_search_count)
-          render :show
+      else
+        movie_service = MovieService.new(current_user, @movie_title, parser)
+        movie_service.save
+        if movie_service.errors.present?
+          flash[:error] = movie_service.errors.join(' ')
         else
-          flash.now[:error] = 'Something goes wrong!'
-          render :index
+          @movie = movie_service.movie
         end
 
-      else
-        @movie = ShowFilm.new(parser.prepare_to_model)
-        render :show
+        send(movie_service.execute[:command], movie_service.execute[:arg])
       end
     end
   end

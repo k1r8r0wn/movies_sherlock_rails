@@ -24,6 +24,10 @@ class ParserService
     info
   end
 
+  def contain_errors?
+    result.key?('Error')
+  end
+
   private
 
   def prepare_data(movie_title)

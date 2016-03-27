@@ -53,8 +53,14 @@
   }
 }
 
-.movie_poster {
+.movie_poster,
+.movie_trailer {
   box-shadow: 6px 4px 21px $black;
+}
+
+.movie_trailer {
+  width: 100%;
+  max-width: 700px;
 }
 
 .thumbs_up,

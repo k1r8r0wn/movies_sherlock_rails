@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user!, only: [:show, :vote_for, :vote_against]
   before_action :movie_title_exists?, only: [:create]
-  after_action :verify_authorized, only: [:show, :vote_for, :vote_against]
+  after_action :verify_authorized, only: [:show, :vote_for, :vote_against, :add_video]
 
   def index; end
 
@@ -57,7 +57,7 @@ class MoviesController < ApplicationController
 
   def search
     authorize :movie, :search?
-    if params[:search] == ''
+    if params[:search].blank?
       redirect_to :back, notice: 'Oops, nothing to search. What would you like to find?'
     else
       @query = Sunspot.search(Movie) do
@@ -74,6 +74,25 @@ class MoviesController < ApplicationController
       end
     end
   end
+
+  def add_video
+    set_movie
+    authorize @movie
+    @movie.update_attribute(:video, params[:movie][:video])
+    render :show
+  end
+
+  # def add_video
+  #   set_movie
+  #   authorize @movie
+  #   if params[:video].blank?
+  #     flash.now[:notice] = 'Oops, there is nothing to add!'
+  #   else
+  #     @movie.update_attribute(:video, params[:video])
+  #     flash.now[:success] = 'Movie trailer is successfully added!'
+  #   end
+  #   render :show
+  # end
 
   private
 

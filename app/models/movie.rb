@@ -6,6 +6,8 @@ class Movie < ActiveRecord::Base
 
   has_and_belongs_to_many :users
 
+  mount_uploader :video, VideoUploader
+
   validates :title, presence: true
 
   searchable do

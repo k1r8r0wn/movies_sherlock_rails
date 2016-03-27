@@ -10,6 +10,10 @@ class MoviePolicy
     true
   end
 
+  def add_video?
+    user.admin?
+  end
+
   alias_method :show?, :all
   alias_method :vote_for?, :all
   alias_method :vote_against?, :all

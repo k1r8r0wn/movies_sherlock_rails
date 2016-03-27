@@ -3,12 +3,25 @@
     .row
       .small-12.columns
         .title.movie Searching results for "#{@movie.title.capitalize}"
-    .row
-      .small-12.columns
-      - if @movie.poster.present?
+    - if @movie.poster.present?
+      .row
         .small-12.columns
           .block
             = image_tag @movie.poster, alt: 'Movie poster', class: 'movie_poster'
+    .row
+      .small-12.columns
+        .block
+          - if @movie.video.present?
+            = video_tag @movie.video, controls: true, autoplay: true, class: 'movie_trailer'
+          - elsif user_signed_in? && current_user.admin?
+            = form_for(@movie, url: add_video_movie_path, html: { method: :post }) do |f|
+              label.file
+                span.file-label Add movie trailer here&hellip;
+                = f.file_field :video
+                span.file-value aria-hidden="true"
+              .actions
+                = f.submit 'Add'
+
     .row.block
       .small-12.medium-4.columns.block
         h2 = @movie.year

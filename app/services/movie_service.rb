@@ -18,7 +18,7 @@ class MovieService
       @movie.users << user
       increment_count
     else
-      @movie = ShowFilm.new(parser.prepare_to_model)
+      @movie = ShowMovieService.new(parser.prepare_to_model)
     end
 
     @execute = {command: 'render', arg: 'show'}

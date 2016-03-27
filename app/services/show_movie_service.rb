@@ -1,4 +1,4 @@
-class ShowFilm
+class ShowMovieService
   def initialize(args)
     # { title => "Title" ...}
     args.each do |method_name, value|

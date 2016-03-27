@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user!, only: [:show, :vote_for, :vote_against]
+  before_action :movie_title_exists?, only: [:create]
   after_action :verify_authorized, only: [:show, :vote_for, :vote_against]
 
   def index; end
@@ -15,31 +16,22 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie_title = params[:movie_title]
-    if @movie_title.empty?
-      flash.now[:error] = 'Oops, nothing to search!'
-      render :index
-    elsif @movie_title.match(/[\p{L}&&[^a-zA-Z]]/)
-      flash.now[:error] = 'Please, use only ASCII characters.'
+    parser = ParserService.new
+    parser.find_movie(@movie_title)
+
+    if parser.contain_errors?
+      flash.now[:error] = "Sorry, but there is no results for \"#{@movie_title}\"."
       render :index
     else
-      parser = ParserService.new
-      parser.find_movie(@movie_title)
-
-      if parser.contain_errors?
-        flash.now[:error] = "Sorry, but there is no results for \"#{@movie_title}\"."
-        render :index
+      movie_service = MovieService.new(current_user, @movie_title, parser)
+      movie_service.save
+      if movie_service.errors.present?
+        flash[:error] = movie_service.errors.join(' ')
       else
-        movie_service = MovieService.new(current_user, @movie_title, parser)
-        movie_service.save
-        if movie_service.errors.present?
-          flash[:error] = movie_service.errors.join(' ')
-        else
-          @movie = movie_service.movie
-        end
-
-        send(movie_service.execute[:command], movie_service.execute[:arg])
+        @movie = movie_service.movie
       end
+
+      send(movie_service.execute[:command], movie_service.execute[:arg])
     end
   end
 
@@ -87,6 +79,17 @@ class MoviesController < ApplicationController
 
   def set_movie
     @movie = Movie.friendly.find(params[:id])
+  end
+
+  def movie_title_exists?
+    @movie_title = params[:movie_title]
+    if @movie_title.empty?
+      flash.now[:error] = 'Oops, nothing to search!'
+      render :index
+    elsif @movie_title.match(/[\p{L}&&[^a-zA-Z]]/)
+      flash.now[:error] = 'Please, use only ASCII characters.'
+      render :index
+    end
   end
 
   def voted?

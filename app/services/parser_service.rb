@@ -11,12 +11,12 @@ class ParserService
 
   def prepare_to_model
     info =
-        {
-          imdb_votes: result['imdbVotes'],
-          imdb_rating: result['imdbRating'],
-          imdb_id: result['imdbID'],
-          film_type: result['Type']
-        }
+      {
+        imdb_votes: result['imdbVotes'],
+        imdb_rating: result['imdbRating'],
+        imdb_id: result['imdbID'],
+        film_type: result['Type']
+      }
     %i(title year rated released runtime genre director writer actors plot
    language country awards poster metascore response error).each do |key|
       info[key] = result[key.to_s.capitalize]

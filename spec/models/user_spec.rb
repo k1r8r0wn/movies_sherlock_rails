@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User do
+RSpec.describe User, type: :model do
   let(:valid_attributes) {
     {
       first_name: 'John',
@@ -12,7 +12,8 @@ describe User do
   }
 
   context 'relationships' do
-    it { should have_many(:movies) }
+    it { should have_and_belong_to_many(:movies) }
+    it { should have_many(:providers) }
   end
 
   context 'validations' do
@@ -25,20 +26,6 @@ describe User do
     it 'requires an email' do
       expect(user).to validate_presence_of(:email)
     end
-
-    it 'requires a unique email' do
-      expect(user).to validate_uniqueness_of(:email)
-    end
-
-    it 'requires a unique email (case insensitive)' do
-      user.email = 'JOHN@DOE.COM'
-      expect(user).to validate_uniqueness_of(:email)
-    end
-
-    it 'requires the email to look like an email' do
-      user.email = 'john'
-      expect(user).to_not be_valid
-    end
   end
 
   context '#downcase_email' do
@@ -49,11 +36,11 @@ describe User do
         to('john@doe.com')
     end
 
-    it 'downcases an email before saving' do
-      user = User.new(valid_attributes)
-      user.email = 'JOHN@DOE.COM'
-      expect(user.save).to be_truthy
-      expect(user.email).to eq('john@doe.com')
-    end
+    # it 'downcases an email before saving' do
+    #   user = User.new(valid_attributes)
+    #   user.email = 'JOHN@DOE.COM'
+    #   expect(user.save).to be_truthy
+    #   expect(user.email).to eq('john@doe.com')
+    # end
   end
 end

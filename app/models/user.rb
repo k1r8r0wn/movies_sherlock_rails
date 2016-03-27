@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  validates :first_name, presence: true
+  validates :first_name, :email, presence: true
 
   def apply_omniauth(omniauth)
     self.first_name = omniauth['info']['name'] || omniauth['info']['first_name'] || omniauth['info']['nickname'] if first_name.blank?

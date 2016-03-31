@@ -1,4 +1,5 @@
 class VideoUploader < CarrierWave::Uploader::Base
+  include ::CarrierWave::Backgrounder::Delay
   include CarrierWave::Video
   include CarrierWave::FFmpeg
 
@@ -9,7 +10,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   end
 
   version :mp4 do
-    process encode_video: [:mp4, audio_codec: 'aac', custom: '-strict experimental -q:v 5 -preset slow -g 30']
+    process :encode_video => [:mp4, custom: '-vcodec h264 -acodec aac -strict -2', logger: :logger, resolution: :same]
 
     def full_filename(for_file)
       super.chomp(File.extname(super)) + '.mp4'

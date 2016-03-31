@@ -10,7 +10,7 @@ class MoviePolicy
     true
   end
 
-  def add_video?
+  def add?
     user.admin?
   end
 

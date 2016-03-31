@@ -3,7 +3,7 @@
     .row
       .small-12.columns
         .title.movie Searching results for "#{@movie.title.capitalize}"
-    - if @movie.poster.present?
+    - unless @movie.poster == 'N/A'
       .row
         .small-12.columns
           .block
@@ -12,9 +12,12 @@
       .small-12.columns
         .block
           - if @movie.video.present?
-            = video_tag @movie.video, controls: true, autoplay: true, class: 'movie_trailer'
+            video width='700' controls='true' preload='auto' autoplay='false' autobuffer='true' class='movie_trailer'
+              source src=@movie.video.webm type='video/webm; codecs="vp8, vorbis"'
+              source src=@movie.video.mp4 type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'
+              source src=@movie.video.ogv type='video/ogg; codecs="theora, vorbis"'
           - elsif user_signed_in? && current_user.admin?
-            = form_for(@movie, url: add_video_movie_path, html: { method: :post }) do |f|
+            = form_for(@movie, url: add_video_path(@movie.id), html: { method: :patch }) do |f|
               label.file
                 span.file-label Add movie trailer here&hellip;
                 = f.file_field :video

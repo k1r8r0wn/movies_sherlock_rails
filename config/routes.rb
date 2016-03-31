@@ -11,10 +11,15 @@ Rails.application.routes.draw do
       post 'vote_for'
       post 'vote_against'
       delete 'unvote'
-
     end
     collection do
       get 'search'
+    end
+  end
+
+  resources :videos do
+    member do
+      patch 'add'
     end
   end
 

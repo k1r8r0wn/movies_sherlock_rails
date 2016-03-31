@@ -57,7 +57,7 @@ class MoviesController < ApplicationController
 
   def search
     authorize :movie, :search?
-    if params[:search] == ''
+    if params[:search].blank?
       redirect_to :back, notice: 'Oops, nothing to search. What would you like to find?'
     else
       @query = Sunspot.search(Movie) do

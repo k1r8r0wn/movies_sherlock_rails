@@ -37,6 +37,7 @@ gem 'rest-client', '~> 1.8'
 gem 'carrierwave', '~> 0.10.0'
 gem 'carrierwave-video', '~> 0.5.6'
 gem 'carrierwave-ffmpeg', '~> 1.0'
+gem 'carrierwave_backgrounder', '~> 0.4.2'
 
 gem 'thumbs_up', '~> 0.6.8'
 

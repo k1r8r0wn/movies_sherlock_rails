@@ -10,8 +10,8 @@ class MovieService
   end
 
   def save
-    if user && user.movies.where(title: title).present?
-      @movie = user.movies.find_by(title: title)
+    if user && user.movies.where(title: title.capitalize).present?
+      @movie = user.movies.find_by(title: title.capitalize)
       increment_count
     elsif user
       @movie = Movie.find_or_create_by(parser.prepare_to_model)

@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby '2.3.1'
 
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.6'
+
 gem 'rake', '~> 11.1', '>= 11.1.2'
 
 gem 'pg', '~> 0.15'
@@ -30,7 +31,7 @@ gem 'foundation-rails', '~> 6.2'
 gem 'foundation-icons-sass-rails', '~> 3.0'
 gem 'bourbon', '~> 4.2', '>= 4.2.6'
 
-gem 'json', '~> 1.8', '>= 1.8.3'
+gem 'json'
 gem 'jbuilder', '~> 2.0'
 
 gem 'rest-client', '~> 1.8'

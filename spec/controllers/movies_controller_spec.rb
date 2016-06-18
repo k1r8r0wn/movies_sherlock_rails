@@ -1,13 +1,28 @@
 require 'rails_helper'
+require 'yaml'
 
-RSpec.describe MoviesController, type: :controller do
-  # TODO: Fix tests
+describe MoviesController, type: :controller do
 
-  # before do
-  #   allow_any_instance_of(ParserService).to receive(:find_movie).with('deadpool') {
-  #     {
-  #         "Title":"Deadpool","Year":"2016","Rated":"R","Released":"12 Feb 2016","Runtime":"108 min","Genre":"Action, Adventure, Comedy","Director":"Tim Miller","Writer":"Rhett Reese, Paul Wernick, Fabian Nicieza (character), Rob Liefeld (character)","Actors":"Ryan Reynolds, Karan Soni, Ed Skrein, Michael Benyaer","Plot":"This is the origin story of former Special Forces operative turned mercenary Wade Wilson, who after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool. Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life.","Language":"English","Country":"USA, Canada","Awards":"N/A","Poster":"http://ia.media-imdb.com/images/M/MV5BMjQyODg5Njc4N15BMl5BanBnXkFtZTgwMzExMjE3NzE@._V1_SX300.jpg","Metascore":"65","imdbRating":"8.6","imdbVotes":"145,561","imdbID":"tt1431045","Type":"movie","Response":"True"
-  #     }
-  #   }
-  # end
+  before do
+    movie_json_data = YAML.load_file("#{::Rails.root}/spec/fixtures/services/movie_hash.yml")
+
+    @parser = ParserService.new
+    allow_any_instance_of(ParserService).to receive(:prepare_data).with('film_name') { movie_json_data['movie'] }
+    allow_any_instance_of(ParserService).to receive(:prepare_to_model) { movie_json_data['movie'] }
+
+  end
+
+  describe 'POST #create' do
+    it 'finds the movie' do
+      movie_title = 'film_name'
+      result = @parser.find_movie(movie_title)
+      p result
+      expect(result).to_not be_nil
+    end
+
+    it 'renders redirects & show flash[:error]' do
+
+    end
+  end
+
 end

@@ -1,0 +1,25 @@
+FactoryGirl.define do
+  factory :movie do
+    title 'Movie'
+    year 'Year'
+    rated 'Rating'
+    released 'Date'
+    runtime 'Time'
+    genre 'Genre'
+    director 'Director'
+    writer 'Writer'
+    actors 'Actors'
+    plot 'Plot'
+    language 'Language'
+    country 'Country'
+    awards 'Awards'
+    poster 'Poster'
+    metascore 'Metascore'
+    imdb_rating 'Rating'
+    imdb_votes 'Votes'
+    imdb_id 'ID'
+    film_type 'Type'
+    response 'True'
+    error 'No'
+  end
+end

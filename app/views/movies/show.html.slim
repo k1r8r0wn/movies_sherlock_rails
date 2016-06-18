@@ -11,7 +11,7 @@
     .row
       .small-12.columns
         .block
-          - if @movie.video.present?
+          - if user_signed_in? && @movie.video.present?
             video width='700' controls='true' preload='auto' autoplay='false' autobuffer='true' class='movie_trailer'
               source src=@movie.video.webm type='video/webm; codecs="vp8, vorbis"'
               source src=@movie.video.mp4 type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'

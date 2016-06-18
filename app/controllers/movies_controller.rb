@@ -48,11 +48,7 @@ class MoviesController < ApplicationController
   def unvote
     current_user.unvote_for(set_movie)
     authorize @movie
-    if true
-      redirect_to :back, success: 'You successfully delete your vote!'
-    else
-      redirect_to :back, error: 'Oops, something goes wrong!'
-    end
+    redirect_to :back, success: 'You successfully delete your vote!'
   end
 
   def search
